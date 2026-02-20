@@ -1,0 +1,76 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# development artifacts
+# Development screenshots (root directory only, exclude public/assets)
+/*.png
+/*.jpg
+/*.jpeg
+/*.gif
+!public/**/*.png
+!public/**/*.jpg
+!public/**/*.jpeg
+!public/**/*.gif
+
+# Playwright logs
+.playwright-mcp/
+
+# Development documentation
+/PHASE*.md
+/*-verification*.md
+/DESIGN_*.md
+/PERFORMANCE_*.md
+/TESTING_*.md
+/RESPONSIVE_*.md
+/PLAN.md
+/COLOR.md
+
+# Data processing artifacts
+/scripts/*.json
+!/scripts/curated-outcome-stories.json
+/scripts/scrape-*.js
+/scripts/download-*.js
+/scripts/generate-*.js
+/scripts/merge-*.js
+/scripts/add-*.js
+/scripts/transform-*.js
+/scripts/CURATION_*.md
+
+# Backup files
+files-before-cleanup.txt
+files-after-cleanup.txt

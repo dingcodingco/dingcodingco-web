@@ -1,0 +1,127 @@
+'use client'
+
+import { useState } from 'react'
+import { FAQ } from '@/types'
+import { faqs } from '@/data/faqs'
+import { ChevronDown, HelpCircle } from 'lucide-react'
+
+type Category = 'all' | 'enrollment' | 'refund' | 'difficulty' | 'outcomes'
+
+export default function FAQSection() {
+  const [activeCategory, setActiveCategory] = useState<Category>('all')
+  const [openFaqId, setOpenFaqId] = useState<string | null>(null)
+
+  const filteredFaqs = activeCategory === 'all'
+    ? faqs
+    : faqs.filter(f => f.category === activeCategory)
+
+  const categoryLabels: Record<Category, string> = {
+    all: '전체',
+    enrollment: '수강 관련',
+    refund: '환불 정책',
+    difficulty: '학습 난이도',
+    outcomes: '취업/수익화'
+  }
+
+  return (
+    <section id="faq" className="py-20 bg-white dark:bg-gray-950">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-900/30 rounded-full mb-4">
+            <HelpCircle className="w-4 h-4 text-primary" />
+            <span className="text-sm font-semibold text-primary">자주 묻는 질문</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-500 mb-4">
+            궁금하신 점이 있으신가요?
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            수강생들이 가장 많이 물어보는 질문들을 모았습니다
+          </p>
+        </div>
+
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {(Object.keys(categoryLabels) as Category[]).map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setActiveCategory(category)
+                setOpenFaqId(null)
+              }}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                activeCategory === category
+                  ? 'bg-primary text-white shadow-md'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
+            >
+              {categoryLabels[category]}
+            </button>
+          ))}
+        </div>
+
+        {/* FAQ Accordion */}
+        <div className="max-w-3xl mx-auto space-y-4">
+          {filteredFaqs.map((faq) => (
+            <div
+              key={faq.id}
+              className="border-2 border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:border-primary/50 transition-colors bg-white dark:bg-gray-900"
+            >
+              <button
+                onClick={() => setOpenFaqId(openFaqId === faq.id ? null : faq.id)}
+                className="w-full px-6 py-4 flex items-center justify-between text-left bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                <span className="text-base font-semibold text-gray-900 dark:text-gray-100 pr-4">
+                  {faq.question}
+                </span>
+                <ChevronDown
+                  className={`w-5 h-5 text-gray-500 dark:text-gray-300 flex-shrink-0 transition-transform ${
+                    openFaqId === faq.id ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+
+              {openFaqId === faq.id && (
+                <div className="px-6 pb-4 pt-2 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+                  <p className="text-gray-700 dark:text-gray-200 leading-relaxed mb-3">
+                    {faq.answer}
+                  </p>
+
+                  {/* Proof Links */}
+                  {faq.proofLinks && faq.proofLinks.length > 0 && (
+                    <div className="flex flex-wrap gap-2 pt-3 border-t border-gray-200 dark:border-gray-600">
+                      {faq.proofLinks.map((link, index) => (
+                        <a
+                          key={index}
+                          href={link.href}
+                          className="text-sm text-primary hover:underline font-medium"
+                        >
+                          {link.label} →
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-2xl max-w-2xl mx-auto border border-gray-200 dark:border-gray-700">
+          <p className="text-gray-700 dark:text-gray-200 mb-4 font-medium">
+            더 궁금한 점이 있으신가요?
+          </p>
+          <a
+            href="https://www.inflearn.com/users/408812/@dingcodingco"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-2 bg-white dark:bg-gray-700 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors"
+          >
+            인프런에서 질문하기
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}

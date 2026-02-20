@@ -1,0 +1,787 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background & Foreground */
+    --background: 0 0% 100%;
+    --foreground: 224 71% 4%;
+
+    /* Primary - Premium Dingco Blue (75% saturation) */
+    --primary-50: 217 75% 97%;       /* #EFF6FF */
+    --primary-100: 217 75% 93%;      /* #DBEAFE */
+    --primary-200: 217 75% 85%;      /* #BFDBFE */
+    --primary-300: 217 75% 73%;      /* #93C5FD */
+    --primary-400: 217 75% 65%;      /* #60A5FA */
+    --primary-500: 217 75% 60%;      /* #3B82F6 - Main (Dingco Blue premium) */
+    --primary-600: 217 75% 53%;      /* #2563EB - Hover */
+    --primary-700: 217 75% 45%;      /* #1D4ED8 - Active */
+    --primary-800: 217 75% 37%;      /* #1E40AF */
+    --primary-900: 217 75% 30%;      /* #1E3A8A */
+
+    /* Primary utility variants */
+    --primary: 217 75% 60%;          /* Alias for primary-500 */
+    --primary-light: 200 75% 58%;    /* Cyan blend (calm) */
+    --primary-dark: 230 75% 45%;     /* Deep blue (calm) */
+    --primary-hover: 217 75% 53%;    /* Alias for primary-600 */
+    --primary-foreground: 0 0% 100%; /* White text */
+
+    /* Neutral Gray Scale (8-level system) */
+    --gray-50: 220 10% 98%;          /* #F9FAFB - Background */
+    --gray-100: 220 10% 95%;         /* #F1F3F5 - Card */
+    --gray-200: 220 10% 90%;         /* #E2E5E9 - Border */
+    --gray-300: 220 10% 80%;         /* #C4CAD0 - Disabled */
+    --gray-400: 220 10% 60%;         /* #8D96A0 - Muted text */
+    --gray-500: 220 10% 45%;         /* #6B7580 - Secondary */
+    --gray-600: 220 10% 35%;         /* #525961 - Body text */
+    --gray-700: 220 10% 25%;         /* #3A3F45 - Headings */
+    --gray-800: 220 10% 15%;         /* #232629 - Strong */
+    --gray-900: 220 10% 10%;         /* #18191C - Near black */
+
+    /* Secondary (using gray system) */
+    --secondary: 220 10% 95%;        /* gray-100 */
+    --secondary-foreground: 220 10% 35%; /* gray-600 */
+
+    /* Track Colors - Full Scales */
+
+    /* Track: AI 비개발자 (Premium Pink) */
+    --track-ai-beginner-50: 325 75% 96%;     /* #FFE9F4+ */
+    --track-ai-beginner-100: 325 75% 92%;    /* #FFD4EA+ */
+    --track-ai-beginner-200: 325 75% 85%;    /* #FFB3D9+ */
+    --track-ai-beginner-300: 325 75% 75%;    /* #FF8DC4+ */
+    --track-ai-beginner-400: 325 75% 65%;    /* #FF66AF+ */
+    --track-ai-beginner-500: 325 75% 60%;    /* #ED4D9E+ (premium) */
+    --track-ai-beginner-600: 325 75% 52%;    /* #D63885+ */
+    --track-ai-beginner-700: 325 75% 45%;    /* #BF246D+ */
+
+    /* Track: AI 비개발자 - Utility variants */
+    --track-ai-beginner: 325 75% 60%;        /* Main color */
+    --track-ai-beginner-bg: 325 75% 96%;     /* Background tint */
+    --track-ai-beginner-border: 325 75% 70%; /* Border color */
+
+    /* Track: AI 개발자 (Premium Cyan) */
+    --track-ai-developer-50: 200 78% 96%;    /* #D9F5FF+ */
+    --track-ai-developer-100: 200 78% 92%;   /* #B3E9FF+ */
+    --track-ai-developer-200: 200 78% 85%;   /* #8DDDFF+ */
+    --track-ai-developer-300: 200 78% 75%;   /* #66D1FF+ */
+    --track-ai-developer-400: 200 78% 65%;   /* #3FC5FF+ */
+    --track-ai-developer-500: 200 78% 58%;   /* #24B6F5+ (premium) */
+    --track-ai-developer-600: 200 78% 50%;   /* #0FA3E0+ */
+    --track-ai-developer-700: 200 78% 42%;   /* #0990CC+ */
+
+    /* Track: AI 개발자 - Utility variants */
+    --track-ai-developer: 200 78% 58%;       /* Main color */
+    --track-ai-developer-bg: 200 78% 96%;    /* Background tint */
+    --track-ai-developer-border: 200 78% 72%; /* Border color */
+
+    /* Track: 스프링 백엔드 (Premium Green) */
+    --track-spring-backend-50: 142 80% 96%;  /* #E1FFE9+ */
+    --track-spring-backend-100: 142 80% 92%; /* #C3FFD3+ */
+    --track-spring-backend-200: 142 80% 85%; /* #A3FFBD+ */
+    --track-spring-backend-300: 142 80% 75%; /* #7DFFA2+ */
+    --track-spring-backend-400: 142 80% 65%; /* #57FF87+ */
+    --track-spring-backend-500: 142 80% 52%; /* #2AB856+ (premium) */
+    --track-spring-backend-600: 142 80% 45%; /* #1FA349+ */
+    --track-spring-backend-700: 142 80% 38%; /* #148E3C+ */
+
+    /* Track: 스프링 백엔드 - Utility variants */
+    --track-spring-backend: 142 80% 52%;     /* Main color */
+    --track-spring-backend-bg: 142 80% 96%;  /* Background tint */
+    --track-spring-backend-border: 142 80% 70%; /* Border color */
+
+    /* Badge Colors - Full Scales */
+
+    /* Badge: Free (Premium Green - 75% saturation) */
+    --badge-free-50: 142 75% 94%;     /* #D1FFE2+ */
+    --badge-free-100: 142 75% 88%;    /* #A3FFCA+ */
+    --badge-free-200: 142 75% 75%;    /* #6FFFAA+ */
+    --badge-free-300: 142 75% 60%;    /* #3BFF8A+ */
+    --badge-free-400: 142 75% 54%;    /* #1DF56C+ */
+    --badge-free-500: 142 75% 48%;    /* #1DB84A+ (premium) */
+    --badge-free-600: 142 75% 40%;    /* #16A33C+ */
+    --badge-free-700: 142 75% 32%;    /* #0D8B31+ */
+
+    /* Badge: Free - Utility variants */
+    --badge-free: 142 75% 48%;        /* Main color */
+    --badge-free-bg: 142 75% 94%;     /* Background tint */
+    --badge-free-text: 142 75% 32%;   /* Text color */
+
+    /* Badge: Premium (Premium Purple - 75% saturation) */
+    --badge-premium-50: 262 75% 94%;   /* #EAD9FF+ */
+    --badge-premium-100: 262 75% 88%;  /* #D6B3FF+ */
+    --badge-premium-200: 262 75% 75%;  /* #C18DFF+ */
+    --badge-premium-300: 262 75% 67%;  /* #AC66FF+ */
+    --badge-premium-400: 262 75% 60%;  /* #AA5EFF+ (premium) */
+    --badge-premium-500: 262 75% 52%;  /* #9940FF+ */
+    --badge-premium-600: 262 75% 45%;  /* #8526F0+ */
+    --badge-premium-700: 262 75% 40%;  /* #7115DD+ */
+
+    /* Badge: Premium - Utility variants */
+    --badge-premium: 262 75% 60%;      /* Main color */
+    --badge-premium-bg: 262 75% 94%;   /* Background tint */
+    --badge-premium-text: 262 75% 40%; /* Text color */
+
+    /* Badge: Coming Soon (Premium Orange - 85% saturation) */
+    --badge-soon-50: 30 85% 94%;      /* #FFE8CC+ */
+    --badge-soon-100: 30 85% 88%;     /* #FFD8A3+ */
+    --badge-soon-200: 30 85% 75%;     /* #FFC266+ */
+    --badge-soon-300: 30 85% 67%;     /* #FFB64D+ */
+    --badge-soon-400: 30 85% 58%;     /* #FF9933+ (premium) */
+    --badge-soon-500: 30 85% 50%;     /* #FF8519+ */
+    --badge-soon-600: 30 85% 42%;     /* #E66900+ */
+    --badge-soon-700: 30 85% 38%;     /* #CC6600+ */
+
+    /* Badge: Coming Soon - Utility variants */
+    --badge-soon: 30 85% 58%;         /* Main color */
+    --badge-soon-bg: 30 85% 94%;      /* Background tint */
+    --badge-soon-text: 30 85% 38%;    /* Text color */
+
+    /* Semantic Colors (referencing badge scales) - Premium */
+
+    /* Success (same as badge-free) - 75% saturation */
+    --success-50: 142 75% 94%;       /* 프리미엄 그린 배경 */
+    --success-100: 142 75% 88%;      /* 밝은 그린 */
+    --success-500: 142 75% 48%;      /* 메인 성공 색상 (premium) */
+    --success-600: 142 75% 40%;      /* 진한 그린 */
+    --success: 142 75% 48%;          /* Main color */
+    --success-bg: 142 75% 94%;       /* Background tint */
+
+    /* Warning (same as badge-soon) - 85% saturation */
+    --warning-50: 30 85% 94%;        /* 프리미엄 오렌지 배경 */
+    --warning-500: 30 85% 58%;       /* 메인 경고 색상 (premium) */
+    --warning: 30 85% 58%;           /* Main color */
+    --warning-bg: 30 85% 94%;        /* Background tint */
+
+    /* Error (red) - 85% saturation */
+    --error-50: 0 85% 94%;           /* 프리미엄 레드 배경 */
+    --error-500: 0 85% 60%;          /* 메인 에러 색상 (premium) */
+    --error: 0 85% 60%;              /* Main color */
+    --error-bg: 0 85% 94%;           /* Background tint */
+
+    /* Info (same as primary) - 75% saturation */
+    --info-50: 217 75% 93%;          /* 블루 배경 (premium) */
+    --info-500: 217 75% 60%;         /* 메인 정보 색상 (premium) */
+    --info: 217 75% 60%;             /* Main color */
+    --info-bg: 217 75% 93%;          /* Background tint */
+
+    /* UI Elements */
+    --card: 0 0% 100%;
+    --card-foreground: 220 10% 25%;  /* gray-700 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 10% 25%; /* gray-700 */
+    --muted: 220 10% 95%;            /* gray-100 */
+    --muted-foreground: 220 10% 45%; /* gray-500 */
+    --destructive: 0 45% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 10% 90%;           /* gray-200 */
+    --input: 220 10% 90%;            /* gray-200 */
+    --ring: 211 45% 55%;             /* primary */
+    --radius: 0.75rem;
+
+    /* Animation Design Tokens */
+    --animation-fast: 150ms;
+    --animation-base: 200ms;
+    --animation-slow: 300ms;
+    --animation-slower: 500ms;
+
+    /* Animation Easings */
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Animation Distances */
+    --lift-sm: -2px;
+    --lift-md: -4px;
+    --lift-lg: -8px;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+
+    /* Primary - Premium for dark mode (75% saturation) */
+    --primary-500: 217 75% 65%;      /* Premium blue */
+    --primary-600: 217 75% 58%;      /* Hover state */
+    --primary-700: 217 75% 50%;      /* Active state */
+    --primary: 217 75% 65%;          /* Main color for dark mode */
+    --primary-light: 200 75% 68%;    /* Cyan blend */
+    --primary-dark: 230 75% 55%;     /* Deep blue */
+    --primary-hover: 217 75% 58%;
+    --primary-foreground: 224 71% 4%;
+
+    /* Dark mode gray scale (semantic values) */
+    --gray-50: 220 10% 98%;      /* Bright text */
+    --gray-100: 220 10% 95%;     /* Bright text */
+    --gray-200: 220 10% 85%;     /* Text/Border */
+    --gray-300: 220 10% 70%;     /* Text/Border */
+    --gray-400: 220 10% 60%;
+    --gray-500: 220 10% 50%;
+    --gray-600: 220 10% 40%;
+    --gray-700: 220 10% 30%;     /* Background */
+    --gray-800: 220 10% 20%;     /* Dark background */
+    --gray-900: 220 10% 15%;     /* Very dark background */
+    --gray-950: 220 10% 10%;     /* Darkest background */
+
+    /* Track colors - Premium for dark mode (75-80% saturation) */
+    --track-ai-beginner: 325 75% 65%;       /* Premium pink */
+    --track-ai-developer: 200 78% 63%;      /* Premium cyan */
+    --track-spring-backend: 142 80% 57%;    /* Premium green */
+
+    /* Badge colors - Premium (75-85% saturation) */
+    --badge-free: 142 75% 53%;              /* Premium green */
+    --badge-premium: 262 75% 65%;           /* Premium purple */
+    --badge-soon: 30 85% 63%;               /* Premium orange */
+
+    /* Semantic colors - Premium */
+    --success: 142 75% 53%;
+    --warning: 30 85% 63%;
+    --error: 0 85% 65%;
+    --info: 217 75% 65%;
+
+    /* UI Elements */
+    --secondary: 220 10% 15%;        /* gray-100 */
+    --secondary-foreground: 220 10% 60%; /* gray-600 */
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+    --muted: 220 10% 15%;            /* gray-100 */
+    --muted-foreground: 220 10% 50%; /* gray-500 */
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 10% 20%;           /* gray-200 */
+    --input: 220 10% 20%;            /* gray-200 */
+    --ring: 217 98% 65%;             /* primary */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  section[id] {
+    scroll-margin-top: 80px; /* Fixed header height */
+  }
+
+  /* Typography Scale (Premium & Refined) */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-[52px];
+    @apply font-semibold tracking-tight leading-[1.15];
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-[36px];
+    @apply font-semibold tracking-tight leading-[1.2];
+    @apply text-gray-800 dark:text-gray-100;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+    @apply font-semibold leading-tight;
+    @apply text-gray-800 dark:text-gray-200;
+  }
+
+  h4 {
+    @apply text-lg md:text-xl;
+    @apply font-medium leading-snug;
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+    @apply text-gray-600 dark:text-gray-400;
+  }
+}
+
+@layer utilities {
+  /* Hero Section Typography - Bold Impact Style */
+  .hero-headline {
+    font-size: clamp(3rem, 8vw, 8rem);  /* 48px ~ 128px responsive */
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+
+  .hero-subhead {
+    font-size: clamp(1.25rem, 2.5vw, 2rem);  /* 20px ~ 32px responsive */
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* Fade In Up Animation - Subtle & Modern */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  /* Hero Section - Clean Solid Background */
+  .bg-gradient-hero {
+    @apply bg-white dark:bg-gray-950;
+  }
+
+  /* Hero Title - Clean Brand Blue Gradient */
+  .text-gradient-hero {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary-500)) 0%,    /* 메인 블루 */
+      hsl(var(--primary-600)) 100%   /* 진한 블루 */
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Primary CTA Button - Premium with Subtle Shadow */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg,
+      hsl(var(--primary-600)) 0%,    /* 진한 블루 */
+      hsl(var(--primary-500)) 50%,   /* 메인 블루 */
+      hsl(var(--primary-light)) 100% /* 시안 블렌드 */
+    );
+    box-shadow: 0 4px 12px hsl(var(--primary-500) / 0.15);
+  }
+
+  /* Badge: Free - Solid Color */
+  .bg-gradient-success {
+    background: hsl(var(--badge-free));
+  }
+
+  /* Badge: Premium - Solid Color */
+  .bg-gradient-premium {
+    background: hsl(var(--badge-premium));
+  }
+
+  /* Badge: Coming Soon - Solid Color */
+  .bg-gradient-soon {
+    background: hsl(var(--badge-soon));
+  }
+
+  /* Badge: Discount - Solid Color */
+  .bg-gradient-discount {
+    background: hsl(0 85% 60%);
+  }
+
+  /* ========================================
+     ENHANCED DISCOUNT SYSTEM STYLES
+     ======================================== */
+
+  /* Discount Badge v2 - Premium Gradient */
+  .bg-gradient-discount-v2 {
+    background: linear-gradient(135deg,
+      hsl(0 85% 65%) 0%,         /* Premium red */
+      hsl(340 85% 60%) 50%,      /* Premium pink middle */
+      hsl(320 85% 55%) 100%      /* Premium deep pink */
+    );
+    box-shadow: 0 2px 8px hsl(0 75% 60% / 0.2);
+  }
+
+  /* Savings Amount Text Gradient */
+  .text-gradient-savings {
+    background: linear-gradient(90deg,
+      hsl(142 100% 38%) 0%,      /* Forest green */
+      hsl(142 100% 45%) 100%     /* Bright green */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+
+  /* Savings Badge Background */
+  .bg-savings-badge {
+    background: linear-gradient(135deg,
+      hsl(142 100% 94%) 0%,
+      hsl(142 100% 96%) 100%
+    );
+    border: 1px solid hsl(142 100% 85%);
+  }
+
+  .dark .bg-savings-badge {
+    background: linear-gradient(135deg,
+      hsl(142 100% 12%) 0%,
+      hsl(142 100% 15%) 100%
+    );
+    border: 1px solid hsl(142 100% 25%);
+  }
+
+  /* Stat Cards - Individual gradients */
+  .text-gradient-stat-tracks {
+    background: linear-gradient(to right,
+      hsl(var(--primary-500)),
+      hsl(var(--primary-400))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-stat-courses {
+    background: linear-gradient(to right,
+      hsl(var(--primary-500)),    /* 메인 블루 */
+      hsl(var(--primary-300))     /* 밝은 블루 */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-stat-students {
+    background: linear-gradient(to right,
+      hsl(var(--primary-600)),    /* 진한 블루 */
+      hsl(var(--primary-400))     /* 밝은 블루 */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-stat-new {
+    background: linear-gradient(to right,
+      hsl(var(--primary-500)),    /* 메인 블루 */
+      hsl(var(--primary-light))   /* 시안 블렌드 */
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Track-specific gradients - Clean 2-Stop Blends */
+  .bg-gradient-track-ai-beginner {
+    background: linear-gradient(135deg,
+      hsl(var(--primary-500)) 0%,          /* 블루 시작 */
+      hsl(var(--track-ai-beginner)) 100%   /* 핑크 끝 */
+    );
+  }
+
+  .bg-gradient-track-ai-developer {
+    background: linear-gradient(135deg,
+      hsl(var(--primary-500)) 0%,          /* 메인 블루 */
+      hsl(var(--track-ai-developer)) 100%  /* 시안 끝 */
+    );
+  }
+
+  .bg-gradient-track-spring-backend {
+    background: linear-gradient(135deg,
+      hsl(var(--primary-500)) 0%,          /* 블루 시작 */
+      hsl(var(--track-spring-backend)) 100%  /* 그린 끝 */
+    );
+  }
+
+  /* Track Background Colors - Primary Dominant (70%) + Track Accent (30%) */
+  .bg-track-ai-beginner {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary-50)) 0%,             /* 블루 tint 시작 */
+      hsl(var(--primary-50)) 85%,            /* 블루 dominant 85% */
+      hsl(var(--track-ai-beginner-50)) 100%  /* 핑크 tint 15% */
+    );
+  }
+
+  .dark .bg-track-ai-beginner {
+    background: linear-gradient(
+      135deg,
+      hsl(220 17% 16%) 0%,      /* gray-900 +4% brighter */
+      hsl(220 17% 18%) 70%,     /* gray-900 dominant +4% brighter */
+      hsl(325 20% 19%) 100%     /* Pink hue for ai-beginner +4% brighter */
+    );
+  }
+
+  .bg-track-ai-developer {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary-50)) 0%,             /* 블루 tint */
+      hsl(var(--primary-50)) 85%,            /* 블루 dominant 85% */
+      hsl(var(--track-ai-developer-50)) 100%  /* 시안 tint 15% */
+    );
+  }
+
+  .dark .bg-track-ai-developer {
+    background: linear-gradient(
+      135deg,
+      hsl(220 17% 16%) 0%,      /* gray-900 +4% brighter */
+      hsl(220 17% 18%) 70%,     /* gray-900 dominant +4% brighter */
+      hsl(200 20% 19%) 100%     /* Cyan hue for ai-developer +4% brighter */
+    );
+  }
+
+  .bg-track-spring-backend {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary-50)) 0%,             /* 블루 tint */
+      hsl(var(--primary-50)) 85%,            /* 블루 dominant 85% */
+      hsl(var(--track-spring-backend-50)) 100%  /* 그린 tint 15% */
+    );
+  }
+
+  .dark .bg-track-spring-backend {
+    background: linear-gradient(
+      135deg,
+      hsl(220 17% 16%) 0%,      /* gray-900 +4% brighter */
+      hsl(220 17% 18%) 70%,     /* gray-900 dominant +4% brighter */
+      hsl(142 20% 19%) 100%     /* Green hue for spring +4% brighter */
+    );
+  }
+
+  /* Shadow utility with primary color */
+  .shadow-primary {
+    box-shadow: 0 12px 24px -8px hsl(var(--primary-500) / 0.12);
+  }
+
+  /* GPU Acceleration for Animated Elements */
+  .gpu-accelerate {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Card Hover Effects (Premium & Subtle) */
+  .card-hover {
+    @apply gpu-accelerate transition-all;
+    transition-duration: var(--animation-base);
+    transition-timing-function: var(--ease-in-out);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px hsl(var(--primary-600) / 0.12);
+  }
+
+  /* Button Hover */
+  .button-hover {
+    @apply gpu-accelerate transition-all;
+    transition-duration: var(--animation-fast);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .button-hover:hover {
+    transform: translateY(var(--lift-sm));
+    @apply shadow-md;
+  }
+
+  /* Link Hover */
+  .link-hover {
+    @apply transition-colors;
+    transition-duration: var(--animation-fast);
+  }
+
+  .link-hover:hover {
+    @apply text-primary;
+  }
+
+  /* Image Zoom on Hover */
+  .image-zoom {
+    @apply gpu-accelerate transition-transform;
+    transition-duration: var(--animation-slow);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .image-zoom:hover {
+    transform: scale(1.05);
+  }
+
+  /* Badge Subtle Glow */
+  .badge-glow {
+    @apply transition-all;
+    transition-duration: var(--animation-base);
+  }
+
+  .badge-glow:hover {
+    @apply shadow-sm;
+    box-shadow: 0 0 12px currentColor;
+    opacity: 0.9;
+  }
+
+  /* Stagger Load Animations */
+  @keyframes fade-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-slide-up {
+    animation: fade-slide-up var(--animation-slower) var(--ease-out) both;
+  }
+
+  .stagger-1 { animation-delay: 100ms; }
+  .stagger-2 { animation-delay: 200ms; }
+  .stagger-3 { animation-delay: 300ms; }
+  .stagger-4 { animation-delay: 400ms; }
+  .stagger-5 { animation-delay: 500ms; }
+  .stagger-6 { animation-delay: 600ms; }
+
+  /* Outdated animations removed for modern, clean aesthetic */
+  /* Previously: pulse-glow, badge-pulse, shimmer, bounce-in */
+
+  /* Marquee Animation for Infinite Scroll */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-25%); /* 4x duplication = move 25% for seamless loop */
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite; /* Faster scrolling speed */
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px; /* Additional smoothness for 3D rendering */
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Slide Up Animation for Toast */
+  @keyframes slide-up {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+
+  /* ========================================
+     OUTCOME STORIES FADE ANIMATION
+     ======================================== */
+
+  @keyframes stories-fade {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-stories-fade {
+    animation: stories-fade 0.4s var(--ease-out) forwards;
+  }
+
+  /* ========================================
+     INSTRUCTOR SECTION ANIMATIONS
+     ======================================== */
+
+  /* Stat card entrance stagger - KEEP */
+  @keyframes stat-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-stat-slide-up {
+    animation: stat-slide-up 0.6s ease-out;
+  }
+
+  /* Card entrance fade-in with slide up */
+  @keyframes card-entrance {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-card-entrance {
+    animation: card-entrance 0.6s ease-out;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-slide-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .animate-stories-fade {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .gpu-accelerate {
+    will-change: auto !important;
+    transform: none !important;
+  }
+}
+
+/* ========================================
+   MOBILE DISCOUNT OPTIMIZATIONS
+   ======================================== */
+
+/* Mobile Discount Optimizations */
+@media (max-width: 640px) {
+  .bg-gradient-discount-v2 {
+    font-size: 0.75rem;  /* text-xs */
+    padding: 0.375rem 0.75rem;  /* px-3 py-1.5 */
+  }
+
+  .animate-discount-pulse-hover {
+    animation-duration: 2s;  /* Slower on mobile */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .bg-gradient-discount-v2 {
+    font-size: 0.875rem;  /* text-sm */
+    padding: 0.5rem 1rem;  /* px-4 py-2 */
+  }
+}
