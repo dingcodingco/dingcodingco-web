@@ -3,35 +3,41 @@
  * Shared components, themes, and helpers for dynamic OG image generation
  */
 
-// Track-specific theme configuration
-export const TRACK_THEMES = {
+// Track-specific theme configuration V2 (Warm & Friendly)
+export const TRACK_THEMES_V2 = {
   'ai-beginner': {
     color: '#ED4D9E',
     badge: '인기 트랙',
-    icon: '🎨',
-    valueProp: '코딩 몰라도 4주 만에 수익화 서비스 런칭',
-    gradientStart: '#EC489A',
-    gradientEnd: '#C13A7E',
+    tagline: '코딩 몰라도 4주 만에 수익화',
+    orbColors: [
+      'rgba(237, 77, 158, 0.18)',   // Pink orb (강도 증가)
+      'rgba(255, 149, 0, 0.12)',    // Orange orb
+      'rgba(249, 168, 212, 0.12)',  // Light pink orb
+    ],
   },
   'ai-developer': {
     color: '#24B6F5',
     badge: '개발자 필수',
-    icon: '🤖',
-    valueProp: '현업 개발자의 10배 생산성 부스터',
-    gradientStart: '#22B4F3',
-    gradientEnd: '#1A8CC2',
+    tagline: '현업 개발자의 10배 생산성 부스터',
+    orbColors: [
+      'rgba(36, 182, 245, 0.15)',   // Cyan orb
+      'rgba(147, 51, 234, 0.1)',    // Purple orb
+      'rgba(59, 130, 246, 0.12)',   // Blue orb
+    ],
   },
   'spring-backend': {
     color: '#2AB856',
     badge: '취업 완성',
-    icon: '🌱',
-    valueProp: 'Lv0 → 38개 기업 합격 백엔드 개발자',
-    gradientStart: '#28B654',
-    gradientEnd: '#209244',
+    tagline: 'Lv0 → 38개 기업 합격 백엔드 개발자',
+    orbColors: [
+      'rgba(42, 184, 86, 0.15)',    // Green orb
+      'rgba(34, 197, 94, 0.12)',    // Emerald orb
+      'rgba(132, 204, 22, 0.1)',    // Lime orb
+    ],
   },
 } as const
 
-export type TrackId = keyof typeof TRACK_THEMES
+export type TrackId = keyof typeof TRACK_THEMES_V2
 
 /**
  * Fetch logo as Base64 with graceful degradation
@@ -60,12 +66,26 @@ export async function fetchLogoAsBase64(baseUrl: string): Promise<string | null>
 }
 
 /**
- * Get theme configuration for a specific track
+ * Get theme configuration for a specific track (V2)
  * @param trackId - Track identifier
  * @returns Theme object with colors and metadata
  */
 export function getTrackTheme(trackId: string) {
-  return TRACK_THEMES[trackId as TrackId] || TRACK_THEMES['ai-beginner']
+  return TRACK_THEMES_V2[trackId as TrackId] || TRACK_THEMES_V2['ai-beginner']
+}
+
+/**
+ * Create warm background with gradient orbs (V2)
+ * @param orbColors - Array of 3 orb colors
+ * @returns CSS background string
+ */
+export function createWarmBackground(orbColors: string[]): string {
+  return `
+    radial-gradient(circle at 15% 20%, ${orbColors[0]} 0%, transparent 50%),
+    radial-gradient(circle at 85% 45%, ${orbColors[1]} 0%, transparent 45%),
+    radial-gradient(circle at 25% 85%, ${orbColors[2]} 0%, transparent 40%),
+    #FFFFFF
+  `
 }
 
 /**
