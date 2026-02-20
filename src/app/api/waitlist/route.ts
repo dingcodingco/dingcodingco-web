@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
 /**
  * POST /api/waitlist
@@ -12,9 +13,6 @@ import { NextRequest, NextResponse } from 'next/server'
  * @returns {400} Bad Request - Invalid input (missing fields or invalid email)
  * @returns {409} Conflict - Email already registered for this course
  * @returns {500} Internal Server Error - Database error or server issue
- *
- * Architecture Note: Uses Supabase MCP for database access
- * The actual MCP integration will be completed when Supabase project is connected
  */
 export async function POST(request: NextRequest) {
   try {
@@ -46,32 +44,37 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Sanitize inputs to prevent SQL injection
+    // Sanitize inputs
     const sanitizedCourseId = courseId.trim().toLowerCase()
     const sanitizedEmail = email.trim().toLowerCase()
 
-    // TODO: Replace with actual Supabase MCP implementation
-    // When Supabase project is connected, use:
-    // const result = await mcp__supabase__execute_sql({
-    //   project_id: process.env.SUPABASE_PROJECT_ID!,
-    //   query: `
-    //     INSERT INTO course_waitlist (course_id, email)
-    //     VALUES ($1, $2)
-    //     RETURNING id, created_at
-    //   `,
-    //   params: [sanitizedCourseId, sanitizedEmail]
-    // })
+    // Insert into Supabase
+    const { data, error } = await supabase
+      .from('course_waitlist')
+      .insert({
+        course_id: sanitizedCourseId,
+        email: sanitizedEmail
+      })
+      .select()
 
-    // Placeholder implementation for development
-    console.log('Waitlist request:', {
-      courseId: sanitizedCourseId,
-      email: sanitizedEmail,
-      timestamp: new Date().toISOString()
-    })
+    // Handle database errors
+    if (error) {
+      // Check for unique constraint violation (duplicate email)
+      if (error.code === '23505') {
+        return NextResponse.json(
+          { error: 'Email already registered for this course' },
+          { status: 409 }
+        )
+      }
 
-    // Check for duplicate (will be handled by UNIQUE constraint in production)
-    // In development, simulate the constraint
-    // In production, handle the PostgreSQL error code 23505 (unique_violation)
+      console.error('Supabase error:', error)
+      return NextResponse.json(
+        { error: 'Failed to add to waitlist' },
+        { status: 500 }
+      )
+    }
+
+    console.log('Waitlist entry created:', data)
 
     return NextResponse.json({
       success: true,
@@ -84,16 +87,6 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Waitlist API error:', error)
-
-    // Handle specific database errors in production
-    // PostgreSQL error code 23505 = unique_violation
-    if (error instanceof Error && 'code' in error && error.code === '23505') {
-      return NextResponse.json(
-        { error: 'Email already registered for this course' },
-        { status: 409 }
-      )
-    }
-
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

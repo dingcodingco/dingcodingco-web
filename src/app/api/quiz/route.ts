@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
 /**
  * POST /api/quiz
@@ -12,9 +13,6 @@ import { NextRequest, NextResponse } from 'next/server'
  * @returns {200} Success - Quiz response saved
  * @returns {400} Bad Request - Invalid input (missing fields or invalid values)
  * @returns {500} Internal Server Error - Database error or server issue
- *
- * Architecture Note: Uses Supabase MCP for database access
- * The actual MCP integration will be completed when Supabase project is connected
  */
 export async function POST(request: NextRequest) {
   try {
@@ -76,27 +74,26 @@ export async function POST(request: NextRequest) {
       recommendedTrackId: recommendedTrackId.trim().toLowerCase()
     }
 
-    // TODO: Replace with actual Supabase MCP implementation
-    // When Supabase project is connected, use:
-    // const result = await mcp__supabase__execute_sql({
-    //   project_id: process.env.SUPABASE_PROJECT_ID!,
-    //   query: `
-    //     INSERT INTO quiz_responses (coding_experience, goal, recommended_track_id)
-    //     VALUES ($1, $2, $3)
-    //     RETURNING id, created_at
-    //   `,
-    //   params: [
-    //     sanitizedData.codingExperience,
-    //     sanitizedData.goal,
-    //     sanitizedData.recommendedTrackId
-    //   ]
-    // })
+    // Insert into Supabase
+    const { data, error } = await supabase
+      .from('quiz_responses')
+      .insert({
+        coding_experience: sanitizedData.codingExperience,
+        goal: sanitizedData.goal,
+        recommended_track_id: sanitizedData.recommendedTrackId
+      })
+      .select()
 
-    // Placeholder implementation for development
-    console.log('Quiz response saved:', {
-      ...sanitizedData,
-      timestamp: new Date().toISOString()
-    })
+    // Handle database errors
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json(
+        { error: 'Failed to save quiz response' },
+        { status: 500 }
+      )
+    }
+
+    console.log('Quiz response saved:', data)
 
     return NextResponse.json({
       success: true,
