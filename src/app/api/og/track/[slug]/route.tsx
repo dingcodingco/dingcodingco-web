@@ -17,10 +17,11 @@ export const runtime = 'edge'
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const { slug } = params
+    // Next.js 15: params is now a Promise
+    const { slug } = await context.params
 
     // Fetch track data from static data source
     const track = getTrackById(slug)
