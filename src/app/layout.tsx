@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   authors: [{ name: "딩코딩코", url: "https://www.youtube.com/@딩코딩코" }],
   creator: "딩코딩코",
   publisher: "딩코딩코",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
+  metadataBase: new URL('https://dingcodingco.vercel.app'),
   openGraph: {
     type: "website",
     locale: "ko_KR",
