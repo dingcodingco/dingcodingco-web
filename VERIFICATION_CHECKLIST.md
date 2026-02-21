@@ -39,7 +39,7 @@
 
 #### Section Header
 - [ ] Title: "이런 변화를 만들어냈어요"
-- [ ] Subtitle: "인플런 실제 수강평 기반 검증된 후기입니다"
+- [ ] Subtitle: "인프런 실제 수강평 기반 검증된 후기입니다"
 
 #### Story Cards (7 total)
 - [ ] Top-right: "실제 수강평" badge + external link icon

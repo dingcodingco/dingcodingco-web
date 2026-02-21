@@ -187,7 +187,7 @@ export default function OutcomeStoriesSection() {
             이런 변화를 만들어냈어요
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            인플런 실제 수강평 기반 검증된 후기입니다
+            인프런 실제 수강평 기반 검증된 후기입니다
           </p>
         </div>
 
@@ -239,7 +239,7 @@ export default function OutcomeStoriesSection() {
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-primary transition-colors"
                       onClick={(e) => e.stopPropagation()}
-                      aria-label="인플런에서 원본 후기 보기"
+                      aria-label="인프런에서 원본 후기 보기"
                     >
                       <ExternalLink className="w-4 h-4" />
                     </a>
@@ -376,7 +376,7 @@ export default function OutcomeStoriesSection() {
         {/* Disclaimer */}
         <div className="text-center mt-8">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            * 실제 인플런 수강평 21개 + 대표적 학습 패턴 기반 참고 사례 포함
+            * 실제 인프런 수강평 21개 + 대표적 학습 패턴 기반 참고 사례 포함
           </p>
         </div>
       </div>

@@ -162,6 +162,10 @@ export default function InstructorSection() {
                       <span>☕</span>
                       <span>Java</span>
                     </span>
+                    <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full text-white text-sm font-medium bg-indigo-500 hover:bg-indigo-600 transition-colors">
+                      <span>🔷</span>
+                      <span>Kotlin</span>
+                    </span>
                     <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full text-white text-sm font-medium bg-green-500 hover:bg-green-600 transition-colors">
                       <span>🍃</span>
                       <span>Spring</span>
@@ -173,6 +177,10 @@ export default function InstructorSection() {
                     <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full text-white text-sm font-medium bg-purple-500 hover:bg-purple-600 transition-colors">
                       <span>🤖</span>
                       <span>AI/Claude</span>
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full text-white text-sm font-medium bg-cyan-500 hover:bg-cyan-600 transition-colors">
+                      <span>✨</span>
+                      <span>Cursor</span>
                     </span>
                     <span className="inline-flex items-center gap-1 px-3 py-2 rounded-full text-white text-sm font-medium bg-yellow-500 hover:bg-yellow-600 transition-colors">
                       <span>📊</span>
@@ -222,7 +230,7 @@ export default function InstructorSection() {
                 </div>
                 <div className="flex items-center gap-3 p-4 sm:p-5 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                   <Star className="w-6 h-6 text-yellow-500 flex-shrink-0" />
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">평균 4.9/5.0 평점 (인플런 기준)</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">평균 4.9/5.0 평점 (인프런 기준)</span>
                 </div>
                 <div className="flex items-center gap-3 p-4 sm:p-5 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                   <Award className="w-6 h-6 text-yellow-500 flex-shrink-0" />

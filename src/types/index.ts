@@ -80,8 +80,8 @@ export interface OutcomeStory {
     value: string;         // "300만원", "5,000만원"
   };
 
-  // ✨ NEW: 수강평 소스 추적 (실제 인플런 수강평 기반)
-  reviewUrl?: string;      // 인플런 원본 수강평 링크
+  // ✨ NEW: 수강평 소스 추적 (실제 인프런 수강평 기반)
+  reviewUrl?: string;      // 인프런 원본 수강평 링크
   reviewAuthor?: string;   // 익명화된 작성자명 (김*민)
   reviewRating?: number;   // 별점 (4.0-5.0)
   reviewDate?: string;     // 작성 날짜
