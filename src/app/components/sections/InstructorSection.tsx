@@ -2,11 +2,7 @@
 
 import { ScrollReveal } from '@/app/components/ui/scroll-reveal'
 import InstructorProfile from '@/app/components/instructor/InstructorProfile'
-import InstructorStats from '@/app/components/instructor/InstructorStats'
-import {
-  instructorProfile,
-  instructorStats
-} from '@/data/instructor'
+import { instructorProfile } from '@/data/instructor'
 
 export default function InstructorSection() {
   return (
@@ -16,7 +12,7 @@ export default function InstructorSection() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-4xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-8">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">
@@ -29,11 +25,6 @@ export default function InstructorSection() {
 
             {/* Profile */}
             <InstructorProfile profile={instructorProfile} />
-
-            {/* Stats Row */}
-            <ScrollReveal delay={100}>
-              <InstructorStats stats={instructorStats} />
-            </ScrollReveal>
           </div>
         </ScrollReveal>
       </div>

@@ -126,6 +126,11 @@ export interface InstructorProfile {
   youtubeUrl: string;
   youtubeSubscribers: string;
   verificationBadge: string;
+  experience: string;
+  background: string;
+  community: string;
+  communityUrl: string;
+  opensource: string;
 }
 
 export interface InstructorStat {

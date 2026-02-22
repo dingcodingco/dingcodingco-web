@@ -20,7 +20,12 @@ export const instructorProfile: InstructorProfile = {
   inflearnUrl: 'https://www.inflearn.com/users/408812/@dingcodingco',
   youtubeUrl: 'https://www.youtube.com/@딩코딩코',
   youtubeSubscribers: '2.6만',
-  verificationBadge: '인프런 공식 인증 강사'
+  verificationBadge: '인프런 공식 인증 강사',
+  experience: '8년차 백엔드 개발자',
+  background: '토스, 포항공대 출신',
+  community: '개발자 취업 커뮤니티 운영 중 (8,000+)',
+  communityUrl: 'https://gaechwippo.vercel.app/',
+  opensource: '오픈소스 (Gradle, Spring AI 등) 다수 Contributor'
 }
 
 // Statistics - Displayed prominently in stats cards

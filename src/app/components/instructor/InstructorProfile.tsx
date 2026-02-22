@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { CheckCircle, ExternalLink, Youtube } from 'lucide-react'
+import { CheckCircle, ExternalLink, Youtube, Users } from 'lucide-react'
 import { Button } from '@/app/components/ui/button'
 import type { InstructorProfile } from '@/types'
 
@@ -10,7 +10,7 @@ interface InstructorProfileProps {
 export default function InstructorProfile({ profile }: InstructorProfileProps) {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden p-8 sm:p-12">
-      <div className="max-w-2xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center">
         {/* Profile Image - Centered, larger size */}
         <div className="relative w-48 h-48 sm:w-64 sm:h-64 mx-auto mb-6">
           {/* Glassmorphism glow background */}
@@ -43,6 +43,22 @@ export default function InstructorProfile({ profile }: InstructorProfileProps) {
           {profile.title}
         </p>
 
+        {/* Experience & Background */}
+        <div className="space-y-3 mb-6 text-gray-700 dark:text-gray-300">
+          <p className="text-base font-medium">{profile.experience}</p>
+          <p className="text-base">{profile.background}</p>
+          <p className="text-base">{profile.opensource}</p>
+          <a
+            href={profile.communityUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-base text-primary hover:text-primary/80 font-medium transition-colors"
+          >
+            {profile.community}
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+
         {/* Social Links */}
         <div className="flex flex-wrap gap-3 justify-center">
           <Button
@@ -62,6 +78,15 @@ export default function InstructorProfile({ profile }: InstructorProfileProps) {
           >
             <Youtube className="w-4 h-4 mr-2" />
             YouTube ({profile.youtubeSubscribers} 구독자)
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+            onClick={() => window.open(profile.communityUrl, '_blank', 'noopener,noreferrer')}
+          >
+            <Users className="w-4 h-4 mr-2" />
+            개발자 취업 커뮤니티
           </Button>
         </div>
       </div>
