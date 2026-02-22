@@ -1,0 +1,158 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "본문으로 건너뛰기" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - button "홈으로 이동" [ref=e7]:
+          - img "딩코딩코 로고" [ref=e8]
+          - text: 딩코딩코 로드맵딩코딩코
+        - generic [ref=e9]:
+          - navigation "메인 네비게이션" [ref=e10]:
+            - button "홈" [ref=e11]
+            - button "트랙" [ref=e12]
+            - button "AI 비개발자" [ref=e13]
+            - button "AI 개발자" [ref=e14]
+            - button "스프링 백엔드" [ref=e15]
+          - button "Toggle theme" [ref=e16]:
+            - img [ref=e17]
+        - button "메뉴 열기" [ref=e23]:
+          - img [ref=e24]
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - heading "수강생 성공 사례" [level=1] [ref=e28]
+          - paragraph [ref=e29]: 100명의 수강생이 딩코딩코와 함께 성장했습니다
+        - region "실제 수강생 성과 스토리 100개 (무작위 순서)" [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - generic [ref=e33]:
+                - img [ref=e34]
+                - text: 실제 수강생 성과
+              - heading "전체 성공 사례" [level=2] [ref=e38]
+              - paragraph [ref=e39]: 인프런 실제 수강평 기반 검증된 후기입니다
+            - generic [ref=e40]:
+              - button "전체" [ref=e41]
+              - button "비개발자" [ref=e42]
+              - button "개발자" [ref=e43]
+              - button "취업 성공" [ref=e44]
+            - region "수강평 1/34 페이지" [ref=e45]:
+              - generic [ref=e47]:
+                - generic [ref=e48]:
+                  - generic [ref=e49]:
+                    - img [ref=e50]
+                    - text: 실제 수강평
+                  - link "인프런에서 원본 후기 보기" [ref=e53] [cursor=pointer]:
+                    - /url: https://www.inflearn.com/course/비개발자-4주만에-수익화-서비스-만들#reviews
+                    - img [ref=e54]
+                - generic [ref=e58]:
+                  - generic [ref=e59]: 학습 기간
+                  - generic [ref=e60]: 4주
+                - generic [ref=e61]:
+                  - generic [ref=e62]:
+                    - generic [ref=e63]: 4주 만에
+                    - text: •비개발자
+                  - generic [ref=e64]: → 서비스 런칭 완료
+                - blockquote [ref=e65]:
+                  - text: "\"정말 4주 만에 서비스를 만들 수 있었어요. AI 도구 활용법이 실용적이고 바로 적용 가능했습니다!\""
+                  - generic [ref=e66]:
+                    - generic [ref=e67]: — 정*희
+                    - generic [ref=e68]:
+                      - img [ref=e69]
+                      - text: "5.0"
+              - generic [ref=e72]:
+                - generic [ref=e73]:
+                  - generic [ref=e74]:
+                    - img [ref=e75]
+                    - text: 실제 수강평
+                  - link "인프런에서 원본 후기 보기" [ref=e78] [cursor=pointer]:
+                    - /url: https://www.inflearn.com/course/비개발자-4주만에-수익화-서비스-만들#reviews
+                    - img [ref=e79]
+                - generic [ref=e83]:
+                  - generic [ref=e84]: 개발 속도
+                  - generic [ref=e85]: 10배 향상
+                - generic [ref=e86]:
+                  - generic [ref=e87]:
+                    - generic [ref=e88]: 27시간 만에
+                    - text: •AI 도구 미경험
+                  - generic [ref=e89]: → 개발 속도 10배 향상
+                - blockquote [ref=e90]:
+                  - text: "\"Cursor와 Claude 활용법을 배워서 개발 속도가 10배는 빨라진 것 같아요. 추천합니다!\""
+                  - generic [ref=e91]:
+                    - generic [ref=e92]: — 윤*아
+                    - generic [ref=e93]:
+                      - img [ref=e94]
+                      - text: "5.0"
+              - generic [ref=e97]:
+                - generic [ref=e98]:
+                  - generic [ref=e99]:
+                    - img [ref=e100]
+                    - text: 실제 수강평
+                  - link "인프런에서 원본 후기 보기" [ref=e103] [cursor=pointer]:
+                    - /url: https://www.inflearn.com/course/비개발자-4주만에-수익화-서비스-만들#reviews
+                    - img [ref=e104]
+                - generic [ref=e108]:
+                  - generic [ref=e109]:
+                    - generic [ref=e110]: 4주 만에
+                    - text: •코딩 지식 전무
+                  - generic [ref=e111]: → 웹과 앱 개발 가능
+                - blockquote [ref=e112]:
+                  - text: "\"비개발자인데도 웹과 앱을 만들 수 있다는 게 신기했어요. 강의 구성이 탄탄하고 따라하기 쉬웠습니다.\""
+                  - generic [ref=e113]:
+                    - generic [ref=e114]: — 강*우
+                    - generic [ref=e115]:
+                      - img [ref=e116]
+                      - text: "4.9"
+            - generic [ref=e118]:
+              - button "이전 페이지" [disabled] [ref=e119]: ←
+              - navigation "수강평 페이지 네비게이션" [ref=e120]:
+                - button "1페이지로 이동" [ref=e121]: "1"
+                - button "2페이지로 이동" [ref=e122]: "2"
+                - text: ...
+                - button "34페이지로 이동" [ref=e123]: "34"
+              - button "다음 페이지" [ref=e124]: →
+              - button "자동 재생 일시정지" [ref=e125]:
+                - img [ref=e126]
+              - status [ref=e129]: 1/34 페이지
+            - generic [ref=e130]:
+              - paragraph [ref=e131]: 당신도 다음 성공 스토리의 주인공이 될 수 있습니다
+              - button "나에게 맞는 트랙 찾기" [ref=e132]
+            - paragraph [ref=e134]: "* 실제 인프런 수강평 21개 + 대표적 학습 패턴 기반 참고 사례 포함"
+      - generic [ref=e136]:
+        - generic [ref=e137]:
+          - generic [ref=e138]:
+            - generic [ref=e139]: 👨‍💻딩코딩코 로드맵
+            - paragraph [ref=e140]: 나에게 맞는 학습 경로를 찾아보세요
+            - generic [ref=e141]:
+              - paragraph [ref=e142]:
+                - text: "\"코딩을 배우면 인생이 달라집니다."
+                - text: 14,556명과 함께 증명한 체계적인 로드맵으로 시작하세요."
+              - button "강사 소개 자세히 보기 →" [ref=e143]
+          - generic [ref=e144]:
+            - heading "학습 트랙" [level=4] [ref=e145]
+            - list [ref=e146]:
+              - listitem [ref=e147]:
+                - link "🎨 AI 비개발자" [ref=e148] [cursor=pointer]:
+                  - /url: "#track-ai-beginner"
+              - listitem [ref=e149]:
+                - link "🤖 AI 개발자" [ref=e150] [cursor=pointer]:
+                  - /url: "#track-ai-developer"
+              - listitem [ref=e151]:
+                - link "🌱 스프링 백엔드" [ref=e152] [cursor=pointer]:
+                  - /url: "#track-spring-backend"
+          - generic [ref=e153]:
+            - heading "문의" [level=4] [ref=e154]
+            - list [ref=e155]:
+              - listitem [ref=e156]:
+                - link "인프런 강의" [ref=e157] [cursor=pointer]:
+                  - /url: https://www.inflearn.com/users/408812/@dingcodingco
+              - listitem [ref=e158]:
+                - link "유튜브 채널" [ref=e159] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@dingcodingco
+        - paragraph [ref=e161]: © 2026 딩코딩코 로드맵. All rights reserved.
+  - region "Notifications (F8)":
+    - list
+```

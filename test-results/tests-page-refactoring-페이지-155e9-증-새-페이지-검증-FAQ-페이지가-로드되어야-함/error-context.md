@@ -1,0 +1,111 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "본문으로 건너뛰기" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - button "홈으로 이동" [ref=e7]:
+          - img "딩코딩코 로고" [ref=e8]
+          - text: 딩코딩코 로드맵딩코딩코
+        - generic [ref=e9]:
+          - navigation "메인 네비게이션" [ref=e10]:
+            - button "홈" [ref=e11]
+            - button "트랙" [ref=e12]
+            - button "AI 비개발자" [ref=e13]
+            - button "AI 개발자" [ref=e14]
+            - button "스프링 백엔드" [ref=e15]
+          - button "Toggle theme" [ref=e16]:
+            - img [ref=e17]
+        - button "메뉴 열기" [ref=e23]:
+          - img [ref=e24]
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - heading "자주 묻는 질문" [level=1] [ref=e28]
+          - paragraph [ref=e29]: 10개 항목으로 여러분의 궁금증을 해결해드립니다
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - generic [ref=e33]:
+              - img [ref=e34]
+              - text: 자주 묻는 질문
+            - heading "FAQ 전체 보기" [level=2] [ref=e38]
+            - paragraph [ref=e39]: 수강생들이 가장 많이 물어보는 질문들을 모았습니다
+          - generic [ref=e40]:
+            - button "전체" [ref=e41]
+            - button "수강 관련" [ref=e42]
+            - button "환불 정책" [ref=e43]
+            - button "학습 난이도" [ref=e44]
+            - button "취업/수익화" [ref=e45]
+          - generic [ref=e46]:
+            - button "코딩 경험이 전혀 없어도 괜찮나요?" [ref=e48]:
+              - text: 코딩 경험이 전혀 없어도 괜찮나요?
+              - img [ref=e49]
+            - button "정말 38개 기업에 합격할 수 있나요?" [ref=e52]:
+              - text: 정말 38개 기업에 합격할 수 있나요?
+              - img [ref=e53]
+            - button "완강까지 얼마나 걸리나요?" [ref=e56]:
+              - text: 완강까지 얼마나 걸리나요?
+              - img [ref=e57]
+            - button "환불이 가능한가요?" [ref=e60]:
+              - text: 환불이 가능한가요?
+              - img [ref=e61]
+            - button "취업 보장이 되나요?" [ref=e64]:
+              - text: 취업 보장이 되나요?
+              - img [ref=e65]
+            - button "강의는 평생 볼 수 있나요?" [ref=e68]:
+              - text: 강의는 평생 볼 수 있나요?
+              - img [ref=e69]
+            - button "Claude Code가 뭔가요?" [ref=e72]:
+              - text: Claude Code가 뭔가요?
+              - img [ref=e73]
+            - button "맥북이 없어도 되나요?" [ref=e76]:
+              - text: 맥북이 없어도 되나요?
+              - img [ref=e77]
+            - button "할인 쿠폰은 어디서 받나요?" [ref=e80]:
+              - text: 할인 쿠폰은 어디서 받나요?
+              - img [ref=e81]
+            - button "강의 미리보기가 가능한가요?" [ref=e84]:
+              - text: 강의 미리보기가 가능한가요?
+              - img [ref=e85]
+          - generic [ref=e87]:
+            - paragraph [ref=e88]: 더 궁금한 점이 있으신가요?
+            - link "인프런에서 질문하기" [ref=e89] [cursor=pointer]:
+              - /url: https://www.inflearn.com/users/408812/@dingcodingco
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - generic [ref=e94]: 👨‍💻딩코딩코 로드맵
+            - paragraph [ref=e95]: 나에게 맞는 학습 경로를 찾아보세요
+            - generic [ref=e96]:
+              - paragraph [ref=e97]:
+                - text: "\"코딩을 배우면 인생이 달라집니다."
+                - text: 14,556명과 함께 증명한 체계적인 로드맵으로 시작하세요."
+              - button "강사 소개 자세히 보기 →" [ref=e98]
+          - generic [ref=e99]:
+            - heading "학습 트랙" [level=4] [ref=e100]
+            - list [ref=e101]:
+              - listitem [ref=e102]:
+                - link "🎨 AI 비개발자" [ref=e103] [cursor=pointer]:
+                  - /url: "#track-ai-beginner"
+              - listitem [ref=e104]:
+                - link "🤖 AI 개발자" [ref=e105] [cursor=pointer]:
+                  - /url: "#track-ai-developer"
+              - listitem [ref=e106]:
+                - link "🌱 스프링 백엔드" [ref=e107] [cursor=pointer]:
+                  - /url: "#track-spring-backend"
+          - generic [ref=e108]:
+            - heading "문의" [level=4] [ref=e109]
+            - list [ref=e110]:
+              - listitem [ref=e111]:
+                - link "인프런 강의" [ref=e112] [cursor=pointer]:
+                  - /url: https://www.inflearn.com/users/408812/@dingcodingco
+              - listitem [ref=e113]:
+                - link "유튜브 채널" [ref=e114] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@dingcodingco
+        - paragraph [ref=e116]: © 2026 딩코딩코 로드맵. All rights reserved.
+  - region "Notifications (F8)":
+    - list
+```

@@ -40,9 +40,14 @@ export default function HeroSection({ onQuizStart }: HeroSectionProps) {
   return (
     <section
       id="hero"
-      className="relative flex items-center justify-center bg-gradient-hero pt-32 pb-20"
+      className="relative flex items-center justify-center bg-gradient-mesh pt-32 pb-20 overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      {/* Background Decorations */}
+      <div className="absolute inset-0 bg-dots opacity-30" />
+      <div className="absolute top-20 right-20 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-20 w-80 h-80 bg-track-ai-beginner/10 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center space-y-8">
 
           {/* 회전 헤드라인 (초대형) */}
@@ -61,19 +66,34 @@ export default function HeroSection({ onQuizStart }: HeroSectionProps) {
             당신의 목표에 맞는 AI 코딩 교육
           </p>
 
-          {/* 사회적 증거 (인라인 3개 stat) */}
-          <div className="flex items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400 flex-wrap">
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
-              <span className="font-semibold">14,556명 수강</span>
+          {/* 사회적 증거 (Glass Cards) */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <div className="glass-card p-6 text-center space-y-2">
+              <Users className="w-8 h-8 mx-auto text-primary-600 dark:text-primary-400" />
+              <div className="text-3xl font-bold text-gradient-stat-students">
+                14,556
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                명 수강
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-              <span className="font-semibold">4.9/5.0 평점</span>
+            <div className="glass-card p-6 text-center space-y-2">
+              <Star className="w-8 h-8 mx-auto fill-yellow-400 text-yellow-400" />
+              <div className="text-3xl font-bold text-gradient-stat-courses">
+                4.9
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                평균 평점
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-green-600 dark:text-green-400" />
-              <span className="font-semibold">이번 주 +89명</span>
+            <div className="glass-card p-6 text-center space-y-2">
+              <TrendingUp className="w-8 h-8 mx-auto text-green-600 dark:text-green-400" />
+              <div className="text-3xl font-bold text-gradient-stat-new">
+                +89
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                이번 주
+              </div>
             </div>
           </div>
 
@@ -89,7 +109,7 @@ export default function HeroSection({ onQuizStart }: HeroSectionProps) {
             <Button
               size="lg"
               onClick={onQuizStart}
-              className="text-xl px-12 py-6 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="btn-gradient-primary btn-cta button-ripple text-xl px-12 py-6 text-white font-bold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               1분 퀴즈로 내 트랙 찾기 →
             </Button>
@@ -100,7 +120,7 @@ export default function HeroSection({ onQuizStart }: HeroSectionProps) {
                 variant="outline"
                 size="lg"
                 onClick={() => setIsVideoOpen(true)}
-                className="text-base px-8 py-4 border-2 border-primary-600 text-primary-600 hover:bg-primary-50 dark:border-primary-500 dark:text-primary-500 dark:hover:bg-primary-950 font-semibold transition-all duration-300"
+                className="button-ripple text-base px-8 py-4 border-2 border-primary-600 text-primary-600 hover:bg-primary-50 dark:border-primary-500 dark:text-primary-500 dark:hover:bg-primary-950 font-semibold transition-all duration-300 relative overflow-hidden"
               >
                 <Play className="w-5 h-5 mr-2" />
                 강의 미리보기 (2분)

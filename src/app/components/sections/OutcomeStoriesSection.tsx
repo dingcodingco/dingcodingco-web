@@ -5,8 +5,9 @@ import { OutcomeStory } from '@/types'
 import { outcomeStories } from '@/data/outcome-stories'
 import { Badge } from '@/app/components/ui/badge'
 import { Card, CardContent } from '@/app/components/ui/card'
-import { Award, ExternalLink, CheckCircle, Star, Play, Pause } from 'lucide-react'
+import { Award, ExternalLink, CheckCircle, Star, Play, Pause, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 type Category = 'all' | 'non-developer' | 'developer' | 'career-change'
 
@@ -56,7 +57,21 @@ function generatePageNumbers(current: number, total: number): (number | string)[
   return pages
 }
 
-export default function OutcomeStoriesSection() {
+interface OutcomeStoriesSectionProps {
+  preview?: boolean        // Preview mode (homepage)
+  fullPage?: boolean      // Full page mode (/success-stories)
+  trackFilter?: string    // Filter by specific track (/roadmaps/[trackId])
+  maxStories?: number     // Max stories to display
+  showViewAllButton?: boolean  // Show "View All" button
+}
+
+export default function OutcomeStoriesSection({
+  preview = false,
+  fullPage = false,
+  trackFilter,
+  maxStories,
+  showViewAllButton = false,
+}: OutcomeStoriesSectionProps = {}) {
   const [activeCategory, setActiveCategory] = useState<Category>('all')
   const [currentPage, setCurrentPage] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -64,16 +79,30 @@ export default function OutcomeStoriesSection() {
   const [isShuffled, setIsShuffled] = useState(false)
   const autoRotateInterval = useRef<NodeJS.Timeout | null>(null)
 
+  // Filter by track if trackFilter is provided
+  let baseStories = shuffledStories
+  if (trackFilter) {
+    baseStories = shuffledStories.filter(s => s.trackId === trackFilter)
+  }
+
   const filteredStories = activeCategory === 'all'
-    ? shuffledStories
-    : shuffledStories.filter(s => s.category === activeCategory)
+    ? baseStories
+    : baseStories.filter(s => s.category === activeCategory)
 
   // Pagination logic
-  const ITEMS_PER_PAGE = 3
-  const totalPages = Math.ceil(filteredStories.length / ITEMS_PER_PAGE)
+  const ITEMS_PER_PAGE = preview ? (maxStories || 3) : 3
+
+  // For preview mode with maxStories, don't paginate - show all up to maxStories
+  const displayStories = preview && maxStories
+    ? filteredStories.slice(0, maxStories)
+    : filteredStories
+
+  const totalPages = Math.ceil(displayStories.length / ITEMS_PER_PAGE)
   const startIndex = currentPage * ITEMS_PER_PAGE
   const endIndex = startIndex + ITEMS_PER_PAGE
-  const currentStories = filteredStories.slice(startIndex, endIndex)
+  const currentStories = preview && maxStories
+    ? displayStories
+    : displayStories.slice(startIndex, endIndex)
 
   // Shuffle stories on mount (once per page load) - client-side only
   useEffect(() => {
@@ -174,20 +203,35 @@ export default function OutcomeStoriesSection() {
     'career-change': '취업 성공'
   }
 
+  useScrollAnimation()
+
   return (
     <section id="outcome-stories" className="py-20 bg-white dark:bg-gray-900" aria-label={`실제 수강생 성과 스토리 ${filteredStories.length}개 (무작위 순서)`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="fade-in-up text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 dark:bg-primary/20 rounded-full mb-4">
             <Award className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold text-primary">실제 수강생 성과</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            이런 변화를 만들어냈어요
-          </h2>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
+              {fullPage ? '전체 성공 사례' : '이런 변화를 만들어냈어요'}
+            </h2>
+            {showViewAllButton && !preview && (
+              <a
+                href="/success-stories"
+                className="text-primary hover:text-primary/80 font-semibold text-lg flex items-center gap-2"
+              >
+                전체 보기 ({outcomeStories.length}) <ArrowRight className="w-5 h-5" />
+              </a>
+            )}
+          </div>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            인프런 실제 수강평 기반 검증된 후기입니다
+            {trackFilter
+              ? '해당 트랙 수강생들의 실제 성공 스토리입니다'
+              : '인프런 실제 수강평 기반 검증된 후기입니다'
+            }
           </p>
         </div>
 
@@ -217,10 +261,11 @@ export default function OutcomeStoriesSection() {
           role="region"
           aria-label={`수강평 ${currentPage + 1}/${totalPages} 페이지`}
         >
-          {currentStories.map((story) => (
+          {currentStories.map((story, index) => (
             <Card
               key={story.id}
-              className="group relative overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-primary/30 hover:shadow-md hover:-translate-y-1 transition-all duration-300 bg-white dark:bg-gray-900"
+              className="fade-in-up stagger-item group relative overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-primary/30 hover:shadow-md hover:-translate-y-1 transition-all duration-300 bg-white dark:bg-gray-900"
+              style={{ '--stagger-index': index } as React.CSSProperties}
             >
               <CardContent className="p-8">
                 {/* Verification Badge + External Link (Top Right) */}
@@ -291,8 +336,8 @@ export default function OutcomeStoriesSection() {
           ))}
         </div>
 
-        {/* Numbered Pagination */}
-        {totalPages > 1 && (
+        {/* Numbered Pagination - Hide in preview mode */}
+        {totalPages > 1 && !preview && (
           <div className="flex justify-center items-center gap-3 mt-12 mb-8">
             {/* Previous Button */}
             <button

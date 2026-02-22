@@ -39,22 +39,24 @@ export default function HomePage() {
   const [isQuizOpen, setIsQuizOpen] = useState(false)
   const [waitlistCourse, setWaitlistCourse] = useState<Course | null>(null)
 
-  // Quiz result state
-  const [recommendedTrackId, setRecommendedTrackId] = useState<string | null>(null)
-
   // Flag to prevent Intersection Observer from interfering during programmatic scroll
   const isProgrammaticScrollRef = useRef(false)
 
-  // Intersection Observer for scroll tracking
+  // Intersection Observer for scroll tracking (homepage only)
   useEffect(() => {
+    // Only track scroll on homepage (no hash or root path)
+    if (window.location.pathname !== '/') return
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           // Skip hash updates during programmatic scroll
           if (entry.isIntersecting && entry.intersectionRatio > 0.5 && !isProgrammaticScrollRef.current) {
             setActiveSection(entry.target.id)
-            // Update URL hash without jumping
-            window.history.replaceState(null, '', `#${entry.target.id}`)
+            // Only update hash if we're on the homepage
+            if (window.location.pathname === '/') {
+              window.history.replaceState(null, '', `#${entry.target.id}`)
+            }
           }
         })
       },
@@ -102,11 +104,8 @@ export default function HomePage() {
   // Quiz completion handler
   const handleQuizComplete = (trackId: string) => {
     setIsQuizOpen(false)
-    setRecommendedTrackId(trackId)
-    scrollToSection(`track-${trackId}`)
-
-    // Remove highlight after 3 seconds
-    setTimeout(() => setRecommendedTrackId(null), 3000)
+    // Redirect to track detail page
+    window.location.href = `/roadmaps/${trackId}`
   }
 
   // Get courses for a specific track
@@ -125,34 +124,39 @@ export default function HomePage() {
         <StructuredData key={`schema-${track.id}`} data={generateCourseJsonLd(track)} />
       ))}
 
-      <Header activeSection={activeSection} onNavigate={scrollToSection} />
+      <Header />
 
       <main>
+        {/* 1. Hero Section - Keep */}
         <HeroSection onQuizStart={() => setIsQuizOpen(true)} />
 
+        {/* 2. Achievements Marquee - Keep */}
         <AchievementsMarquee />
 
-        <TracksOverviewSection onTrackClick={scrollToSection} />
+        {/* 3. Tracks Overview - Keep, add detail links */}
+        <TracksOverviewSection showDetailLinks={true} />
 
-        <OutcomeStoriesSection />
+        {/* 4. Outcome Stories - Preview (3 stories only) */}
+        <OutcomeStoriesSection
+          preview={true}
+          maxStories={3}
+          showViewAllButton={true}
+        />
 
+        {/* 5. Instructor Section - Compact version */}
         <InstructorSection />
 
-        {tracks.map((track) => (
-          <TrackDetailSection
-            key={track.id}
-            track={track}
-            courses={getCoursesByTrack(track.id)}
-            onCourseClick={setWaitlistCourse}
-            onQuizStart={() => setIsQuizOpen(true)}
-            isHighlighted={recommendedTrackId === track.id}
-          />
-        ))}
+        {/* 6. FAQ - Preview (5 items only) */}
+        <FAQSection
+          preview={true}
+          maxItems={5}
+          showViewAllButton={true}
+        />
 
-        <FAQSection />
-
-        <Footer />
+        {/* TrackDetailSection removed - now in /roadmaps/[trackId] */}
       </main>
+
+      <Footer />
 
       <QuizModal
         isOpen={isQuizOpen}

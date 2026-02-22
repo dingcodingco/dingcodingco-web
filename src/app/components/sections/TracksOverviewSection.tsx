@@ -1,11 +1,16 @@
+'use client'
+
 import { tracks } from '@/data/tracks'
 import { Card, CardContent, CardFooter } from '@/app/components/ui/card'
 import { Badge } from '@/app/components/ui/badge'
 import { Code, Clock, Target, BarChart, Users, ArrowRight } from 'lucide-react'
 import { TrackIcons } from '@/lib/track-icons'
+import Link from 'next/link'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 interface TracksOverviewSectionProps {
-  onTrackClick: (trackId: string) => void
+  onTrackClick?: (trackId: string) => void
+  showDetailLinks?: boolean  // Show links to detail pages instead of hash scrolling
 }
 
 // Comparison feature data structure
@@ -105,14 +110,19 @@ const trackComparisonColors: Record<string, {
   }
 }
 
-export default function TracksOverviewSection({ onTrackClick }: TracksOverviewSectionProps) {
+export default function TracksOverviewSection({
+  onTrackClick,
+  showDetailLinks = false
+}: TracksOverviewSectionProps) {
+  useScrollAnimation()
+
   return (
     <section id="tracks" className="py-16 md:py-24 lg:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Track Comparison Section - Modern Card-Based */}
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12 space-y-4">
+          <div className="fade-in-up text-center mb-12 space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
               학습 트랙
             </h2>
@@ -130,7 +140,8 @@ export default function TracksOverviewSection({ onTrackClick }: TracksOverviewSe
               return (
                 <div
                   key={track.id}
-                  className={`animate-fade-slide-up stagger-${Math.min(index + 1, 6)}`}
+                  className="fade-in-up stagger-item"
+                  style={{ '--stagger-index': index } as React.CSSProperties}
                 >
                   <Card className={`
                     group relative overflow-hidden h-full
@@ -204,22 +215,41 @@ export default function TracksOverviewSection({ onTrackClick }: TracksOverviewSe
 
                     {/* CTA Footer */}
                     <CardFooter className="p-6 pt-0">
-                      <button
-                        onClick={() => onTrackClick(`track-${track.id}`)}
-                        aria-label={`${track.name} 트랙 자세히 보기`}
-                        className={`
-                          w-full ${colors.buttonBg}
-                          text-white font-semibold
-                          px-6 py-3 rounded-lg
-                          flex items-center justify-center gap-2
-                          transition-all duration-200
-                          hover:shadow-lg
-                          focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
-                        `}
-                      >
-                        자세히 보기
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-                      </button>
+                      {showDetailLinks ? (
+                        <Link
+                          href={`/roadmaps/${track.id}`}
+                          aria-label={`${track.name} 트랙 자세히 보기`}
+                          className={`
+                            w-full ${colors.buttonBg}
+                            text-white font-semibold
+                            px-6 py-3 rounded-lg
+                            flex items-center justify-center gap-2
+                            transition-all duration-200
+                            hover:shadow-lg
+                            focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+                          `}
+                        >
+                          자세히 보기
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={() => onTrackClick?.(`track-${track.id}`)}
+                          aria-label={`${track.name} 트랙 자세히 보기`}
+                          className={`
+                            w-full ${colors.buttonBg}
+                            text-white font-semibold
+                            px-6 py-3 rounded-lg
+                            flex items-center justify-center gap-2
+                            transition-all duration-200
+                            hover:shadow-lg
+                            focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+                          `}
+                        >
+                          자세히 보기
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                        </button>
+                      )}
                     </CardFooter>
                   </Card>
                 </div>

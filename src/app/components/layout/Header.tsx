@@ -11,35 +11,34 @@ import {
   SheetTrigger,
 } from '@/app/components/ui/sheet'
 import ThemeToggle from '@/app/components/ThemeToggle'
+import { usePathname } from 'next/navigation'
 
 interface HeaderProps {
-  activeSection: string
-  onNavigate: (sectionId: string) => void
+  activeSection?: string
+  onNavigate?: (sectionId: string) => void
 }
 
 const navLinks = [
-  { id: 'hero', label: '홈' },
-  { id: 'tracks', label: '트랙' },
-  { id: 'track-ai-beginner', label: 'AI 비개발자' },
-  { id: 'track-ai-developer', label: 'AI 개발자' },
-  { id: 'track-spring-backend', label: '스프링 백엔드' },
+  { href: '/', label: '홈' },
+  { href: '/roadmaps/ai-beginner', label: 'AI 비개발자' },
+  { href: '/roadmaps/ai-developer', label: 'AI 개발자' },
+  { href: '/roadmaps/spring-backend', label: '스프링 백엔드' },
+  { href: '/success-stories', label: '성공 사례' },
+  { href: '/about', label: '강사 소개' },
+  { href: '/faq', label: 'FAQ' },
 ]
 
 export default function Header({ activeSection, onNavigate }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
-
-  const handleNavigate = (sectionId: string) => {
-    onNavigate(sectionId)
-    setIsOpen(false)
-  }
+  const pathname = usePathname()
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <button
-            onClick={() => handleNavigate('hero')}
+          <Link
+            href="/"
             className="flex items-center gap-2 text-xl font-bold text-primary hover:text-primary-dark transition-colors"
             aria-label="홈으로 이동"
           >
@@ -52,25 +51,30 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
             />
             <span className="hidden sm:inline">딩코딩코 로드맵</span>
             <span className="sm:hidden">딩코딩코</span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4">
             <nav className="flex items-center gap-1" aria-label="메인 네비게이션">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => handleNavigate(link.id)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                    activeSection === link.id
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                  }`}
-                  aria-current={activeSection === link.id ? 'page' : undefined}
-                >
-                  {link.label}
-                </button>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href ||
+                  (link.href !== '/' && pathname?.startsWith(link.href))
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                      isActive
+                        ? 'bg-primary text-primary-foreground'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    }`}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
             </nav>
             <ThemeToggle />
           </div>
@@ -102,20 +106,26 @@ export default function Header({ activeSection, onNavigate }: HeaderProps) {
                   <ThemeToggle />
                 </div>
                 <nav className="flex flex-col gap-2" aria-label="모바일 네비게이션">
-                  {navLinks.map((link) => (
-                    <button
-                      key={link.id}
-                      onClick={() => handleNavigate(link.id)}
-                      className={`px-4 py-3 rounded-md text-sm font-medium text-left transition-colors ${
-                        activeSection === link.id
-                          ? 'bg-primary text-primary-foreground'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                      }`}
-                      aria-current={activeSection === link.id ? 'page' : undefined}
-                    >
-                      {link.label}
-                    </button>
-                  ))}
+                  {navLinks.map((link) => {
+                    const isActive = pathname === link.href ||
+                      (link.href !== '/' && pathname?.startsWith(link.href))
+
+                    return (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`px-4 py-3 rounded-md text-sm font-medium text-left transition-colors ${
+                          isActive
+                            ? 'bg-primary text-primary-foreground'
+                            : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                        }`}
+                        aria-current={isActive ? 'page' : undefined}
+                      >
+                        {link.label}
+                      </Link>
+                    )
+                  })}
                 </nav>
               </div>
             </SheetContent>

@@ -1,0 +1,342 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "본문으로 건너뛰기" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - button "홈으로 이동" [ref=e7]:
+          - img "딩코딩코 로고" [ref=e8]
+          - text: 딩코딩코 로드맵딩코딩코
+        - generic [ref=e9]:
+          - navigation "메인 네비게이션" [ref=e10]:
+            - button "홈" [ref=e11]
+            - button "트랙" [ref=e12]
+            - button "AI 비개발자" [ref=e13]
+            - button "AI 개발자" [ref=e14]
+            - button "스프링 백엔드" [ref=e15]
+          - button "Toggle theme" [ref=e16]:
+            - img [ref=e17]
+        - button "메뉴 열기" [ref=e23]:
+          - img [ref=e24]
+    - main [ref=e25]:
+      - generic [ref=e28]:
+        - heading "코딩 몰라도4주 만에 수익화 💰" [level=1] [ref=e29]
+        - paragraph [ref=e30]:
+          - text: 비개발자부터 현업 개발자까지
+          - text: 당신의 목표에 맞는 AI 코딩 교육
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - img [ref=e33]
+            - text: 14,556명 수강
+          - generic [ref=e38]:
+            - img [ref=e39]
+            - text: 4.9/5.0 평점
+          - generic [ref=e41]:
+            - img [ref=e42]
+            - text: 이번 주 +89명
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - img [ref=e47]
+            - generic [ref=e49]:
+              - generic [ref=e50]: 인프런 환불 정책 적용
+              - generic [ref=e51]: 구매 후 7일 이내
+          - generic [ref=e52]:
+            - img [ref=e53]
+            - generic [ref=e55]:
+              - generic [ref=e56]: 평생 수강 가능
+              - generic [ref=e57]: 기간 제한 없음
+          - generic [ref=e58]:
+            - img [ref=e59]
+            - generic [ref=e62]:
+              - generic [ref=e63]: 수료증 발급
+              - generic [ref=e64]: 학습 완료 증명
+        - generic [ref=e65]:
+          - button "1분 퀴즈로 내 트랙 찾기 →" [ref=e66]
+          - button "강의 미리보기 (2분)" [ref=e68]:
+            - img [ref=e69]
+            - text: 강의 미리보기 (2분)
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - heading "학습 트랙" [level=2] [ref=e75]
+            - paragraph [ref=e76]: 3가지 검증된 학습 경로를 비교하고 선택하세요 - 14,556명이 선택했어요
+          - generic [ref=e77]:
+            - generic [ref=e79]:
+              - generic [ref=e81]:
+                - img [ref=e83]
+                - heading "AI 비개발자" [level=4] [ref=e89]
+              - generic [ref=e90]:
+                - generic [ref=e91]:
+                  - img [ref=e93]
+                  - generic [ref=e96]:
+                    - generic [ref=e97]: 코딩 경험
+                    - generic [ref=e98]: 필요 없음
+                - generic [ref=e99]:
+                  - img [ref=e101]
+                  - generic [ref=e104]:
+                    - generic [ref=e105]: 학습 기간
+                    - generic [ref=e106]: 4-6주
+                - generic [ref=e107]:
+                  - img [ref=e109]
+                  - generic [ref=e113]:
+                    - generic [ref=e114]: 목표
+                    - generic [ref=e115]: 수익화 💰
+                - generic [ref=e116]:
+                  - img [ref=e118]
+                  - generic [ref=e119]:
+                    - generic [ref=e120]: 난이도
+                    - generic [ref=e121]: ⭐⭐
+                - generic [ref=e122]:
+                  - img [ref=e124]
+                  - generic [ref=e129]:
+                    - generic [ref=e130]: 추천 대상
+                    - generic [ref=e131]: 창업, 기획자
+              - link "AI 비개발자 트랙 자세히 보기" [ref=e133] [cursor=pointer]:
+                - /url: /roadmaps/ai-beginner
+                - text: 자세히 보기
+                - img [ref=e134]
+            - generic [ref=e137]:
+              - generic [ref=e139]:
+                - img [ref=e141]
+                - heading "AI 개발자" [level=4] [ref=e144]
+              - generic [ref=e145]:
+                - generic [ref=e146]:
+                  - img [ref=e148]
+                  - generic [ref=e151]:
+                    - generic [ref=e152]: 코딩 경험
+                    - generic [ref=e153]: 있음 (현업)
+                - generic [ref=e154]:
+                  - img [ref=e156]
+                  - generic [ref=e159]:
+                    - generic [ref=e160]: 학습 기간
+                    - generic [ref=e161]: 4주
+                - generic [ref=e162]:
+                  - img [ref=e164]
+                  - generic [ref=e168]:
+                    - generic [ref=e169]: 목표
+                    - generic [ref=e170]: 생산성 향상 ⚡
+                - generic [ref=e171]:
+                  - img [ref=e173]
+                  - generic [ref=e174]:
+                    - generic [ref=e175]: 난이도
+                    - generic [ref=e176]: ⭐⭐⭐⭐
+                - generic [ref=e177]:
+                  - img [ref=e179]
+                  - generic [ref=e184]:
+                    - generic [ref=e185]: 추천 대상
+                    - generic [ref=e186]: 현업 개발자
+              - link "AI 개발자 트랙 자세히 보기" [ref=e188] [cursor=pointer]:
+                - /url: /roadmaps/ai-developer
+                - text: 자세히 보기
+                - img [ref=e189]
+            - generic [ref=e192]:
+              - generic [ref=e194]:
+                - img [ref=e196]
+                - heading "스프링 백엔드" [level=4] [ref=e200]
+              - generic [ref=e201]:
+                - generic [ref=e202]:
+                  - img [ref=e204]
+                  - generic [ref=e207]:
+                    - generic [ref=e208]: 코딩 경험
+                    - generic [ref=e209]: 조금 있음
+                - generic [ref=e210]:
+                  - img [ref=e212]
+                  - generic [ref=e215]:
+                    - generic [ref=e216]: 학습 기간
+                    - generic [ref=e217]: 12-16주
+                - generic [ref=e218]:
+                  - img [ref=e220]
+                  - generic [ref=e224]:
+                    - generic [ref=e225]: 목표
+                    - generic [ref=e226]: 취업/이직 🎯
+                - generic [ref=e227]:
+                  - img [ref=e229]
+                  - generic [ref=e230]:
+                    - generic [ref=e231]: 난이도
+                    - generic [ref=e232]: ⭐⭐⭐
+                - generic [ref=e233]:
+                  - img [ref=e235]
+                  - generic [ref=e240]:
+                    - generic [ref=e241]: 추천 대상
+                    - generic [ref=e242]: 취준생, 이직자
+              - link "스프링 백엔드 트랙 자세히 보기" [ref=e244] [cursor=pointer]:
+                - /url: /roadmaps/spring-backend
+                - text: 자세히 보기
+                - img [ref=e245]
+        - paragraph [ref=e248]:
+          - text: 어떤 트랙을 선택해야 할지 고민이신가요?
+          - button "트랙 추천 퀴즈" [ref=e249]
+          - text: 를 시작해보세요!
+      - region "실제 수강생 성과 스토리 100개 (무작위 순서)" [ref=e250]:
+        - generic [ref=e251]:
+          - generic [ref=e252]:
+            - generic [ref=e253]:
+              - img [ref=e254]
+              - text: 실제 수강생 성과
+            - heading "이런 변화를 만들어냈어요" [level=2] [ref=e258]
+            - paragraph [ref=e259]: 인프런 실제 수강평 기반 검증된 후기입니다
+          - generic [ref=e260]:
+            - button "전체" [ref=e261]
+            - button "비개발자" [ref=e262]
+            - button "개발자" [ref=e263]
+            - button "취업 성공" [ref=e264]
+          - region "수강평 1/1 페이지" [ref=e265]:
+            - generic [ref=e267]:
+              - generic [ref=e268]:
+                - generic [ref=e269]:
+                  - img [ref=e270]
+                  - text: 실제 수강평
+                - link "인프런에서 원본 후기 보기" [ref=e273] [cursor=pointer]:
+                  - /url: https://www.inflearn.com/course/비개발자-4주만에-수익화-서비스-만들#reviews
+                  - img [ref=e274]
+              - generic [ref=e278]:
+                - generic [ref=e279]: 학습 기간
+                - generic [ref=e280]: 4주
+              - generic [ref=e281]:
+                - generic [ref=e282]:
+                  - generic [ref=e283]: 4주 만에
+                  - text: •비개발자
+                - generic [ref=e284]: → 서비스 런칭 완료
+              - blockquote [ref=e285]:
+                - text: "\"정말 4주 만에 서비스를 만들 수 있었어요. AI 도구 활용법이 실용적이고 바로 적용 가능했습니다!\""
+                - generic [ref=e286]:
+                  - generic [ref=e287]: — 정*희
+                  - generic [ref=e288]:
+                    - img [ref=e289]
+                    - text: "5.0"
+            - generic [ref=e292]:
+              - generic [ref=e293]:
+                - generic [ref=e294]:
+                  - img [ref=e295]
+                  - text: 실제 수강평
+                - link "인프런에서 원본 후기 보기" [ref=e298] [cursor=pointer]:
+                  - /url: https://www.inflearn.com/course/비개발자-4주만에-수익화-서비스-만들#reviews
+                  - img [ref=e299]
+              - generic [ref=e303]:
+                - generic [ref=e304]: 개발 속도
+                - generic [ref=e305]: 10배 향상
+              - generic [ref=e306]:
+                - generic [ref=e307]:
+                  - generic [ref=e308]: 27시간 만에
+                  - text: •AI 도구 미경험
+                - generic [ref=e309]: → 개발 속도 10배 향상
+              - blockquote [ref=e310]:
+                - text: "\"Cursor와 Claude 활용법을 배워서 개발 속도가 10배는 빨라진 것 같아요. 추천합니다!\""
+                - generic [ref=e311]:
+                  - generic [ref=e312]: — 윤*아
+                  - generic [ref=e313]:
+                    - img [ref=e314]
+                    - text: "5.0"
+            - generic [ref=e317]:
+              - generic [ref=e318]:
+                - generic [ref=e319]:
+                  - img [ref=e320]
+                  - text: 실제 수강평
+                - link "인프런에서 원본 후기 보기" [ref=e323] [cursor=pointer]:
+                  - /url: https://www.inflearn.com/course/비개발자-4주만에-수익화-서비스-만들#reviews
+                  - img [ref=e324]
+              - generic [ref=e328]:
+                - generic [ref=e329]:
+                  - generic [ref=e330]: 4주 만에
+                  - text: •코딩 지식 전무
+                - generic [ref=e331]: → 웹과 앱 개발 가능
+              - blockquote [ref=e332]:
+                - text: "\"비개발자인데도 웹과 앱을 만들 수 있다는 게 신기했어요. 강의 구성이 탄탄하고 따라하기 쉬웠습니다.\""
+                - generic [ref=e333]:
+                  - generic [ref=e334]: — 강*우
+                  - generic [ref=e335]:
+                    - img [ref=e336]
+                    - text: "4.9"
+          - generic [ref=e338]:
+            - paragraph [ref=e339]: 당신도 다음 성공 스토리의 주인공이 될 수 있습니다
+            - button "나에게 맞는 트랙 찾기" [ref=e340]
+          - paragraph [ref=e342]: "* 실제 인프런 수강평 21개 + 대표적 학습 패턴 기반 참고 사례 포함"
+      - generic [ref=e346]:
+        - generic [ref=e347]:
+          - heading "강사 소개" [level=2] [ref=e348]
+          - paragraph [ref=e349]: 현장에서 검증된 실력과 노하우를 전수합니다
+        - generic [ref=e351]:
+          - img "딩코딩코 강사 프로필" [ref=e354]
+          - generic [ref=e355]:
+            - img [ref=e356]
+            - text: 인프런 공식 인증 강사
+          - heading "딩코딩코" [level=3] [ref=e359]
+          - paragraph [ref=e360]: AI 코딩 교육 전문가 • 백엔드 개발자
+          - generic [ref=e361]:
+            - button "인프런 프로필 보기" [ref=e362]:
+              - img [ref=e363]
+              - text: 인프런 프로필 보기
+            - button "YouTube (2.6만 구독자)" [ref=e367]:
+              - img [ref=e368]
+              - text: YouTube (2.6만 구독자)
+        - generic [ref=e374]:
+          - img [ref=e375]
+          - generic [ref=e377]:
+            - heading "실전 중심 교육 철학" [level=4] [ref=e378]
+            - paragraph [ref=e379]: "\"코딩은 누구나 배울 수 있습니다. 하지만 진짜 문제는 '어떻게' 배우느냐입니다. 저는 여러분이 단순히 코드를 따라치는 게 아니라, 왜 이렇게 작동하는지 이해하고 설명할 수 있도록 가르칩니다.\""
+            - paragraph [ref=e380]: — 이론보다 실전, 암기보다 이해
+      - generic [ref=e382]:
+        - generic [ref=e383]:
+          - generic [ref=e384]:
+            - img [ref=e385]
+            - text: 자주 묻는 질문
+          - heading "궁금하신 점이 있으신가요?" [level=2] [ref=e389]
+          - paragraph [ref=e390]: 수강생들이 가장 많이 물어보는 질문들을 모았습니다
+        - generic [ref=e391]:
+          - button "코딩 경험이 전혀 없어도 괜찮나요?" [ref=e393]:
+            - text: 코딩 경험이 전혀 없어도 괜찮나요?
+            - img [ref=e394]
+          - button "정말 38개 기업에 합격할 수 있나요?" [ref=e397]:
+            - text: 정말 38개 기업에 합격할 수 있나요?
+            - img [ref=e398]
+          - button "완강까지 얼마나 걸리나요?" [ref=e401]:
+            - text: 완강까지 얼마나 걸리나요?
+            - img [ref=e402]
+          - button "환불이 가능한가요?" [ref=e405]:
+            - text: 환불이 가능한가요?
+            - img [ref=e406]
+          - button "취업 보장이 되나요?" [ref=e409]:
+            - text: 취업 보장이 되나요?
+            - img [ref=e410]
+        - generic [ref=e412]:
+          - paragraph [ref=e413]: 더 궁금한 점이 있으신가요?
+          - link "인프런에서 질문하기" [ref=e414] [cursor=pointer]:
+            - /url: https://www.inflearn.com/users/408812/@dingcodingco
+      - generic [ref=e416]:
+        - generic [ref=e417]:
+          - generic [ref=e418]:
+            - generic [ref=e419]: 👨‍💻딩코딩코 로드맵
+            - paragraph [ref=e420]: 나에게 맞는 학습 경로를 찾아보세요
+            - generic [ref=e421]:
+              - paragraph [ref=e422]:
+                - text: "\"코딩을 배우면 인생이 달라집니다."
+                - text: 14,556명과 함께 증명한 체계적인 로드맵으로 시작하세요."
+              - button "강사 소개 자세히 보기 →" [ref=e423]
+          - generic [ref=e424]:
+            - heading "학습 트랙" [level=4] [ref=e425]
+            - list [ref=e426]:
+              - listitem [ref=e427]:
+                - link "🎨 AI 비개발자" [ref=e428] [cursor=pointer]:
+                  - /url: "#track-ai-beginner"
+              - listitem [ref=e429]:
+                - link "🤖 AI 개발자" [ref=e430] [cursor=pointer]:
+                  - /url: "#track-ai-developer"
+              - listitem [ref=e431]:
+                - link "🌱 스프링 백엔드" [ref=e432] [cursor=pointer]:
+                  - /url: "#track-spring-backend"
+          - generic [ref=e433]:
+            - heading "문의" [level=4] [ref=e434]
+            - list [ref=e435]:
+              - listitem [ref=e436]:
+                - link "인프런 강의" [ref=e437] [cursor=pointer]:
+                  - /url: https://www.inflearn.com/users/408812/@dingcodingco
+              - listitem [ref=e438]:
+                - link "유튜브 채널" [ref=e439] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@dingcodingco
+        - paragraph [ref=e441]: © 2026 딩코딩코 로드맵. All rights reserved.
+  - region "Notifications (F8)":
+    - list
+```

@@ -115,3 +115,48 @@ export interface ActivityTemplate {
   achievements?: string[];
   ratings?: string[];
 }
+
+// Instructor Profile Types
+
+export interface InstructorProfile {
+  name: string;
+  title: string;
+  profileImage: string;
+  inflearnUrl: string;
+  youtubeUrl: string;
+  youtubeSubscribers: string;
+  verificationBadge: string;
+}
+
+export interface InstructorStat {
+  icon: 'Award' | 'Users' | 'Star';
+  value: string;
+  label: string;
+  subtitle: string;
+  gradient: string;
+}
+
+export interface TechStack {
+  icon: string;
+  name: string;
+  color: string;
+}
+
+export interface Timeline {
+  year: string;
+  milestone: string;
+}
+
+export interface PhilosophyMessage {
+  id: string;
+  title?: string;
+  message: string;
+  author?: string;
+  usage: 'hero' | 'footer' | 'about-page';
+}
+
+export interface TrustIndicator {
+  icon: 'CheckCircle' | 'Star' | 'Award' | 'Youtube' | 'Shield' | 'TrendingUp';
+  label: string;
+  subtitle?: string;
+}

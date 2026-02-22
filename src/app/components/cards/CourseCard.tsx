@@ -49,22 +49,34 @@ export default function CourseCard({ course, onWaitlistClick }: CourseCardProps)
 
   return (
     <Card
-      className="group hover:shadow-lg hover:-translate-y-1 transition-all duration-200 h-full flex flex-col overflow-hidden cursor-pointer border border-gray-200 hover:border-primary/30 dark:border-gray-700"
+      className="card-hover group h-full flex flex-col overflow-hidden cursor-pointer border border-gray-200 hover:border-primary/30 dark:border-gray-700"
       onClick={handleCardClick}
     >
-      {/* Thumbnail - Top 16:9 Full Width */}
-      <div className="relative w-full aspect-video overflow-hidden">
+      {/* Thumbnail - Top 16:9 Full Width with Enhanced Hover */}
+      <div className="relative w-full aspect-video overflow-hidden group">
         <CourseImage
           src={course.thumbnailUrl}
           alt={course.title}
-          className="transition-transform duration-300 group-hover:scale-105"
+          className="transition-transform duration-500 group-hover:scale-110"
           priority={false}
         />
 
-        {/* Enhanced 15% Discount Badge - Top Right */}
+        {/* Gradient Overlay on Hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* Play Button Overlay (Published courses only) */}
+        {course.status === 'published' && (
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
+              <ExternalLink className="w-8 h-8 text-primary-600" />
+            </div>
+          </div>
+        )}
+
+        {/* Enhanced 15% Discount Badge - Top Right with 3D Effect */}
         {!course.isFree && course.price > 0 && course.status === 'published' && (
-          <div className="absolute top-3 right-3 z-10 animate-badge-bounce-in">
-            <Badge className="bg-gradient-discount-v2 text-white text-base font-extrabold px-5 py-2.5 shadow-lg backdrop-blur-sm border-0 transition-all duration-300">
+          <div className="absolute top-3 right-3 z-10">
+            <Badge className="bg-gradient-discount-v2 text-white text-base font-extrabold px-5 py-2.5 shadow-lg backdrop-blur-sm border-0 transform hover:scale-105 transition-transform">
               15% 할인
             </Badge>
           </div>

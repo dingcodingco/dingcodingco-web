@@ -39,16 +39,20 @@ export default function TrackCard({ track, onClick }: TrackCardProps) {
       onClick={onClick}
       className="block h-full w-full text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
       aria-label={`${track.name} 트랙으로 이동`}
+      style={{ '--track-color': `var(--track-${track.id}-500)` } as React.CSSProperties}
     >
-      <Card className={`group h-full border-3 ${colors.border} ${colors.gradient} hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] transition-all duration-300 cursor-pointer relative overflow-hidden`}>
+      <Card className={`track-card glass-card group h-full border-3 ${colors.border} hover:shadow-2xl transition-all duration-300 cursor-pointer relative overflow-hidden`}>
         <CardHeader>
           <div className="flex items-start justify-between mb-4">
-            {/* Icon with Gradient Background */}
-            <div className={`w-18 h-18 rounded-2xl ${colors.iconBg} shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all flex items-center justify-center`}>
-              <IconComponent className="w-9 h-9 text-white" strokeWidth={3} aria-hidden="true" />
+            {/* Icon with Enhanced Gradient Background */}
+            <div className="relative mb-6">
+              <div className={`absolute inset-0 ${colors.iconBg} rounded-xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity`} />
+              <div className={`relative w-18 h-18 rounded-2xl ${colors.iconBg} shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all flex items-center justify-center`}>
+                <IconComponent className="w-9 h-9 text-white" strokeWidth={3} aria-hidden="true" />
+              </div>
             </div>
             {track.badge && (
-              <Badge className={`text-xs ${colors.badge} animate-badge-pulse shadow-md`}>
+              <Badge className={`text-xs ${colors.badge} shadow-lg group-hover:scale-105 transition-transform`}>
                 {track.badge}
               </Badge>
             )}

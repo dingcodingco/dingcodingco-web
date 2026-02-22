@@ -33,7 +33,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-pretendard)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-pretendard)', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

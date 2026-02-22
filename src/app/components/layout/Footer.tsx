@@ -1,5 +1,8 @@
+import { philosophyMessages } from '@/data/instructor'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const footerPhilosophy = philosophyMessages.find(p => p.usage === 'footer')
 
   return (
     <footer className="bg-muted border-t border-border mt-24">
@@ -16,22 +19,22 @@ export default function Footer() {
             </p>
 
             {/* Teaching Philosophy */}
-            <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
-              <p className="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed mb-2">
-                "코딩을 배우면 인생이 달라집니다.
-                <br />
-                14,556명과 함께 증명한 체계적인 로드맵으로 시작하세요."
-              </p>
-              <button
-                onClick={() => {
-                  // TODO: Open instructor bio modal or scroll to about section
-                  console.log('Show instructor bio')
-                }}
-                className="text-xs text-primary hover:underline font-medium"
-              >
-                강사 소개 자세히 보기 →
-              </button>
-            </div>
+            {footerPhilosophy && (
+              <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-xs text-gray-600 dark:text-gray-300 italic leading-relaxed mb-2">
+                  {footerPhilosophy.message}
+                </p>
+                <button
+                  onClick={() => {
+                    // TODO: Open instructor bio modal or scroll to about section
+                    console.log('Show instructor bio')
+                  }}
+                  className="text-xs text-primary hover:underline font-medium"
+                >
+                  강사 소개 자세히 보기 →
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Quick Links */}

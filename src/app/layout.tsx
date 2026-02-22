@@ -1,15 +1,16 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import { Toaster } from "@/app/components/ui/toaster"
 import { ThemeProvider } from "@/app/providers/ThemeProvider"
 import { generateOrganizationJsonLd, generateWebSiteJsonLd } from "@/lib/structured-data"
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-  weight: ["400", "500", "600", "700"]
+const pretendard = localFont({
+  src: '../../public/fonts/PretendardVariable.woff2',
+  display: 'swap',
+  variable: '--font-pretendard',
+  weight: '45 920', // Variable font range
+  fallback: ['system-ui', 'sans-serif']
 })
 
 export const metadata: Metadata = {
@@ -77,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" className={inter.variable} suppressHydrationWarning>
+    <html lang="ko" className={pretendard.variable} suppressHydrationWarning>
       <head>
         {/* Google Analytics */}
         <script
@@ -102,7 +103,7 @@ export default function RootLayout({
                 const theme = localStorage.getItem('theme') || 'dark';
                 const root = document.documentElement;
                 // Add font variable class
-                root.className = '${inter.variable}';
+                root.className = '${pretendard.variable}';
                 // Add dark class if needed
                 if (theme === 'dark') {
                   root.classList.add('dark');

@@ -1,0 +1,150 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "본문으로 건너뛰기" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - button "홈으로 이동" [ref=e7]:
+          - img "딩코딩코 로고" [ref=e8]
+          - text: 딩코딩코 로드맵딩코딩코
+        - generic [ref=e9]:
+          - navigation "메인 네비게이션" [ref=e10]:
+            - button "홈" [ref=e11]
+            - button "트랙" [ref=e12]
+            - button "AI 비개발자" [ref=e13]
+            - button "AI 개발자" [ref=e14]
+            - button "스프링 백엔드" [ref=e15]
+          - button "Toggle theme" [ref=e16]:
+            - img [ref=e17]
+        - button "메뉴 열기" [ref=e23]:
+          - img [ref=e24]
+    - main [ref=e25]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - heading "강사 소개" [level=2] [ref=e31]
+          - paragraph [ref=e32]: 현장에서 검증된 실력과 노하우를 전수합니다
+        - generic [ref=e34]:
+          - img "딩코딩코 강사 프로필" [ref=e37]
+          - generic [ref=e38]:
+            - img [ref=e39]
+            - text: 인프런 공식 인증 강사
+          - heading "딩코딩코" [level=3] [ref=e42]
+          - paragraph [ref=e43]: AI 코딩 교육 전문가 • 백엔드 개발자
+          - generic [ref=e44]:
+            - button "인프런 프로필 보기" [ref=e45]:
+              - img [ref=e46]
+              - text: 인프런 프로필 보기
+            - button "YouTube (2.6만 구독자)" [ref=e50]:
+              - img [ref=e51]
+              - text: YouTube (2.6만 구독자)
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - img [ref=e58]
+            - generic [ref=e61]:
+              - generic [ref=e62]: 38+
+              - generic [ref=e63]: 대기업 합격
+              - generic [ref=e64]: 네이버, 카카오, 토스, 쿠팡, 배민 등
+          - generic [ref=e65]:
+            - img [ref=e67]
+            - generic [ref=e72]:
+              - generic [ref=e73]: 14,556+
+              - generic [ref=e74]: 누적 수강생
+              - generic [ref=e75]: 매주 +89명 증가 중
+          - generic [ref=e76]:
+            - img [ref=e78]
+            - generic [ref=e80]:
+              - generic [ref=e81]: 4.9/5.0
+              - generic [ref=e82]: 평균 만족도
+              - generic [ref=e83]: 1,200+ 리뷰 기반
+        - generic [ref=e87]:
+          - img [ref=e88]
+          - generic [ref=e90]:
+            - heading "실전 중심 교육 철학" [level=4] [ref=e91]
+            - paragraph [ref=e92]: "\"코딩은 누구나 배울 수 있습니다. 하지만 진짜 문제는 '어떻게' 배우느냐입니다. 저는 여러분이 단순히 코드를 따라치는 게 아니라, 왜 이렇게 작동하는지 이해하고 설명할 수 있도록 가르칩니다.\""
+            - paragraph [ref=e93]: — 이론보다 실전, 암기보다 이해
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - generic [ref=e97]:
+              - img [ref=e98]
+              - heading "전문 기술" [level=4] [ref=e101]
+            - generic [ref=e102]:
+              - generic [ref=e103]: ☕Java
+              - generic [ref=e104]: 🔷Kotlin
+              - generic [ref=e105]: 🍃Spring
+              - generic [ref=e106]: 🐍Python
+              - generic [ref=e107]: 🤖AI/Claude
+              - generic [ref=e108]: ✨Cursor
+              - generic [ref=e109]: 📊SQL
+              - generic [ref=e110]: 🔧Git
+          - generic [ref=e111]:
+            - generic [ref=e112]:
+              - img [ref=e113]
+              - heading "주요 이력" [level=4] [ref=e116]
+            - generic [ref=e117]:
+              - generic [ref=e118]: 2019프로그래밍 교육 시작
+              - generic [ref=e119]: 2021인프런 입점,첫 1,000명 돌파
+              - generic [ref=e120]: 202310,000명 수강생 달성
+              - generic [ref=e121]: 202438개 기업 합격 노하우 정리
+        - generic [ref=e123]:
+          - generic [ref=e124]:
+            - img [ref=e125]
+            - text: 백엔드 취업 성공자 다수 배출
+          - generic [ref=e128]:
+            - img [ref=e129]
+            - text: 평균 4.9/5.0 평점 (인프런 기준)
+          - generic [ref=e131]:
+            - img [ref=e132]
+            - text: 인프런 베스트셀러 5회
+          - generic [ref=e135]:
+            - img [ref=e136]
+            - text: YouTube 2.6만 구독자
+          - generic [ref=e139]:
+            - img [ref=e140]
+            - text: 평생 Q&A 지원
+      - generic [ref=e144]:
+        - heading "강의 철학" [level=2] [ref=e145]
+        - generic [ref=e146]:
+          - paragraph [ref=e147]: 코딩 교육은 단순히 문법을 가르치는 것이 아닙니다. 실제 문제를 해결하는 능력, 스스로 학습하는 방법, 그리고 지속적으로 성장할 수 있는 마인드셋을 키우는 것이 핵심입니다.
+          - paragraph [ref=e148]:
+            - text: 저는 이론보다 실전을, 암기보다 이해를 중요시합니다. 여러분이 단순히 코드를 따라치는 게 아니라,
+            - strong [ref=e149]: 왜 이렇게 작동하는지 이해하고 설명할 수 있도록
+            - text: 가르칩니다.
+          - paragraph [ref=e150]: 14,556명 이상의 수강생과 함께하며 검증된 커리큘럼으로, 여러분의 성장을 책임지고 함께 걸어가겠습니다.
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - generic [ref=e154]:
+            - generic [ref=e155]: 👨‍💻딩코딩코 로드맵
+            - paragraph [ref=e156]: 나에게 맞는 학습 경로를 찾아보세요
+            - generic [ref=e157]:
+              - paragraph [ref=e158]:
+                - text: "\"코딩을 배우면 인생이 달라집니다."
+                - text: 14,556명과 함께 증명한 체계적인 로드맵으로 시작하세요."
+              - button "강사 소개 자세히 보기 →" [ref=e159]
+          - generic [ref=e160]:
+            - heading "학습 트랙" [level=4] [ref=e161]
+            - list [ref=e162]:
+              - listitem [ref=e163]:
+                - link "🎨 AI 비개발자" [ref=e164] [cursor=pointer]:
+                  - /url: "#track-ai-beginner"
+              - listitem [ref=e165]:
+                - link "🤖 AI 개발자" [ref=e166] [cursor=pointer]:
+                  - /url: "#track-ai-developer"
+              - listitem [ref=e167]:
+                - link "🌱 스프링 백엔드" [ref=e168] [cursor=pointer]:
+                  - /url: "#track-spring-backend"
+          - generic [ref=e169]:
+            - heading "문의" [level=4] [ref=e170]
+            - list [ref=e171]:
+              - listitem [ref=e172]:
+                - link "인프런 강의" [ref=e173] [cursor=pointer]:
+                  - /url: https://www.inflearn.com/users/408812/@dingcodingco
+              - listitem [ref=e174]:
+                - link "유튜브 채널" [ref=e175] [cursor=pointer]:
+                  - /url: https://www.youtube.com/@dingcodingco
+        - paragraph [ref=e177]: © 2026 딩코딩코 로드맵. All rights reserved.
+  - region "Notifications (F8)":
+    - list
+```

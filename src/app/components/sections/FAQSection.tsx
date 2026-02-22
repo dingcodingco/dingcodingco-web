@@ -3,17 +3,43 @@
 import { useState } from 'react'
 import { FAQ } from '@/types'
 import { faqs } from '@/data/faqs'
-import { ChevronDown, HelpCircle } from 'lucide-react'
+import { ChevronDown, HelpCircle, ArrowRight } from 'lucide-react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 type Category = 'all' | 'enrollment' | 'refund' | 'difficulty' | 'outcomes'
 
-export default function FAQSection() {
+interface FAQSectionProps {
+  preview?: boolean         // Preview mode (homepage)
+  fullPage?: boolean       // Full page mode (/faq)
+  trackFilter?: string     // Filter by track (/roadmaps/[trackId])
+  maxItems?: number        // Max items to display
+  showViewAllButton?: boolean  // Show "View All" button
+}
+
+export default function FAQSection({
+  preview = false,
+  fullPage = false,
+  trackFilter,
+  maxItems,
+  showViewAllButton = false,
+}: FAQSectionProps = {}) {
   const [activeCategory, setActiveCategory] = useState<Category>('all')
   const [openFaqId, setOpenFaqId] = useState<string | null>(null)
 
+  // Filter by track if trackFilter is provided
+  let baseFaqs = faqs
+  if (trackFilter) {
+    baseFaqs = faqs.filter(f => f.relatedTrackId === trackFilter)
+  }
+
   const filteredFaqs = activeCategory === 'all'
-    ? faqs
-    : faqs.filter(f => f.category === activeCategory)
+    ? baseFaqs
+    : baseFaqs.filter(f => f.category === activeCategory)
+
+  // Limit items if in preview mode
+  const displayFaqs = preview && maxItems
+    ? filteredFaqs.slice(0, maxItems)
+    : filteredFaqs
 
   const categoryLabels: Record<Category, string> = {
     all: '전체',
@@ -23,49 +49,67 @@ export default function FAQSection() {
     outcomes: '취업/수익화'
   }
 
+  useScrollAnimation()
+
   return (
     <section id="faq" className="py-20 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="fade-in-up text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-900/30 rounded-full mb-4">
             <HelpCircle className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold text-primary">자주 묻는 질문</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-500 mb-4">
-            궁금하신 점이 있으신가요?
-          </h2>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-500">
+              {fullPage ? 'FAQ 전체 보기' : '궁금하신 점이 있으신가요?'}
+            </h2>
+            {showViewAllButton && !preview && (
+              <a
+                href="/faq"
+                className="text-primary hover:text-primary/80 font-semibold text-lg flex items-center gap-2"
+              >
+                전체 보기 ({faqs.length}) <ArrowRight className="w-5 h-5" />
+              </a>
+            )}
+          </div>
           <p className="text-lg text-gray-600 dark:text-gray-400">
-            수강생들이 가장 많이 물어보는 질문들을 모았습니다
+            {trackFilter
+              ? '해당 트랙 관련 자주 묻는 질문들입니다'
+              : '수강생들이 가장 많이 물어보는 질문들을 모았습니다'
+            }
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {(Object.keys(categoryLabels) as Category[]).map((category) => (
-            <button
-              key={category}
-              onClick={() => {
-                setActiveCategory(category)
-                setOpenFaqId(null)
-              }}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === category
-                  ? 'bg-primary text-white shadow-md'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-              }`}
-            >
-              {categoryLabels[category]}
-            </button>
-          ))}
-        </div>
+        {/* Category Filter - Hide in preview mode */}
+        {!preview && (
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {(Object.keys(categoryLabels) as Category[]).map((category) => (
+              <button
+                key={category}
+                onClick={() => {
+                  setActiveCategory(category)
+                  setOpenFaqId(null)
+                }}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === category
+                    ? 'bg-primary text-white shadow-md'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`}
+              >
+                {categoryLabels[category]}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* FAQ Accordion */}
         <div className="max-w-3xl mx-auto space-y-4">
-          {filteredFaqs.map((faq) => (
+          {displayFaqs.map((faq, index) => (
             <div
               key={faq.id}
-              className="border-2 border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:border-primary/50 transition-colors bg-white dark:bg-gray-900"
+              className="fade-in-up stagger-item border-2 border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:border-primary/50 transition-colors bg-white dark:bg-gray-900"
+              style={{ '--stagger-index': index } as React.CSSProperties}
             >
               <button
                 onClick={() => setOpenFaqId(openFaqId === faq.id ? null : faq.id)}
@@ -113,12 +157,12 @@ export default function FAQSection() {
             더 궁금한 점이 있으신가요?
           </p>
           <a
-            href="https://www.inflearn.com/users/408812/@dingcodingco"
+            href="https://open.kakao.com/o/sXR4MZ8h"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-6 py-2 bg-white dark:bg-gray-700 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors"
           >
-            인프런에서 질문하기
+            오픈카톡방에서 문의하기
           </a>
         </div>
       </div>
