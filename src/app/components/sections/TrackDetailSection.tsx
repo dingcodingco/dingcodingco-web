@@ -1,7 +1,7 @@
 'use client'
 
 import type { Track, Course } from '@/types'
-import CourseCard from '@/app/components/cards/CourseCard'
+import CourseListItem from '@/app/components/cards/CourseListItem'
 import { Badge } from '@/app/components/ui/badge'
 import { Button } from '@/app/components/ui/button'
 import { TrustBadge } from '@/app/components/ui/TrustBadge'
@@ -41,6 +41,21 @@ export default function TrackDetailSection({
   const bgClass = trackBackgrounds[track.id] || trackBackgrounds['ai-developer']
   const accentClass = trackAccents[track.id] || trackAccents['ai-developer']
   const IconComponent = TrackIcons[track.iconName]
+
+  // Group courses by level
+  const groupedCourses = courses.reduce((acc, course) => {
+    if (!acc[course.level]) {
+      acc[course.level] = []
+    }
+    acc[course.level].push(course)
+    return acc
+  }, {} as Record<string, Course[]>)
+
+  // Define level order
+  const levelOrder = ['STEP 1', 'STEP 2', 'STEP 3', 'Lv0', 'Lv1', 'Lv2', 'Lv3', '알고리즘', '취업']
+  const sortedLevels = Object.keys(groupedCourses).sort((a, b) =>
+    levelOrder.indexOf(a) - levelOrder.indexOf(b)
+  )
 
   return (
     <section
@@ -113,17 +128,49 @@ export default function TrackDetailSection({
           </div>
         </ScrollReveal>
 
-        {/* Learning Roadmap Diagram */}
+        {/* Course List - Moved UP, now before roadmap */}
         <ScrollReveal delay={150}>
+          <div className="max-w-7xl mx-auto mb-12">
+            <h3 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100">
+              강의 목록
+            </h3>
+
+            {/* Level-grouped course list */}
+            {sortedLevels.map((level) => (
+              <div key={level} className="space-y-4 mb-8">
+                {/* Level Header */}
+                <div className="flex items-center gap-3 my-6">
+                  <div className="h-px flex-1 bg-gray-300 dark:bg-gray-600" />
+                  <h4 className="text-lg font-bold text-primary">{level}</h4>
+                  <div className="h-px flex-1 bg-gray-300 dark:bg-gray-600" />
+                </div>
+
+                {/* Courses in this level */}
+                <div className="space-y-4">
+                  {groupedCourses[level].map((course) => (
+                    <CourseListItem
+                      key={course.id}
+                      course={course}
+                      onWaitlistClick={onCourseClick}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
+
+        {/* Learning Roadmap Diagram - Moved DOWN, now after course list */}
+        <ScrollReveal delay={200}>
           <div className="max-w-4xl mx-auto mb-12">
-            <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-center text-gray-900 dark:text-gray-100">
+            <h3 className="text-2xl font-semibold mb-6 text-center text-gray-900 dark:text-gray-100">
               학습 로드맵
             </h3>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-              {/* Group courses by level */}
-              {Array.from(new Set(courses.map(c => c.level))).map((level, index, array) => {
-                const levelCourses = courses.filter(c => c.level === level)
-                const isLast = index === array.length - 1
+              {/* Group courses by level for roadmap */}
+              {sortedLevels.map((level, index) => {
+                const levelCourses = groupedCourses[level]
+                const isLast = index === sortedLevels.length - 1
 
                 return (
                   <div key={level} className="flex items-center gap-4 md:gap-6">
@@ -153,35 +200,17 @@ export default function TrackDetailSection({
               })}
             </div>
 
-            {/* Progress Indicator (placeholder for future feature) */}
+            {/* Progress Indicator */}
             <div className="text-center mt-6 text-sm text-gray-500 dark:text-gray-400">
               {track.courseCount}개 강의를 순차적으로 학습하세요
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Course List */}
-        <ScrollReveal delay={200}>
-          <div className="max-w-7xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl font-semibold mb-8 text-center text-gray-900 dark:text-gray-100">
-              강의 목록
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {courses.map((course, index) => (
-                <div
-                  key={course.id}
-                  className={`animate-fade-slide-up stagger-${Math.min(index + 1, 6)}`}
-                >
-                  <CourseCard
-                    course={course}
-                    onWaitlistClick={onCourseClick}
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Box */}
-            <div className="mt-12 max-w-2xl mx-auto p-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-2 border-primary shadow-lg">
+        {/* CTA Box - Remains at bottom */}
+        <ScrollReveal delay={250}>
+          <div className="max-w-2xl mx-auto">
+            <div className="p-8 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl border-2 border-primary shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-3 text-center">
                 {track.name} 트랙을 시작하시겠어요?
               </h3>

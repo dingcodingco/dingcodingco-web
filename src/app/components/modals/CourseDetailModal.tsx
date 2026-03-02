@@ -14,6 +14,7 @@ import { WaitlistForm } from '@/app/components/WaitlistForm'
 import { Clock, DollarSign, ExternalLink } from 'lucide-react'
 import { BadgeIcons } from '@/lib/track-icons'
 import { CourseImage } from '@/app/components/ui/course-image'
+import { calculateDiscountPrice, formatPrice, calculateSavingsAmount, formatSavings } from '@/lib/utils'
 
 interface CourseDetailModalProps {
   course: Course | null
@@ -25,10 +26,6 @@ export default function CourseDetailModal({ course, onClose }: CourseDetailModal
 
   // Only show modal for coming_soon courses (waitlist function)
   if (course.status !== 'coming_soon') return null
-
-  const formatPrice = (price: number) => {
-    return `₩${price.toLocaleString()}`
-  }
 
   const getStatusBadge = () => {
     if (course.isFree) {
@@ -97,24 +94,41 @@ export default function CourseDetailModal({ course, onClose }: CourseDetailModal
               </div>
               <div className="flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-muted-foreground" />
-                <div>
-                  <div className="text-xs text-muted-foreground">가격</div>
-                  <div className="font-medium">
-                    {course.isFree ? (
-                      '무료'
-                    ) : course.salePrice ? (
-                      <>
-                        <span className="line-through text-muted-foreground/60 text-sm">
+                <div className="flex-1">
+                  <div className="text-xs text-muted-foreground mb-1">가격</div>
+                  {course.isFree ? (
+                    <div className="font-medium text-green-600 dark:text-green-400">무료</div>
+                  ) : (
+                    <div className="space-y-1">
+                      {/* Main Price Display */}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {/* Discounted Price */}
+                        <span className="text-lg font-bold text-gray-900 dark:text-white">
+                          {formatPrice(calculateDiscountPrice(course.price))}
+                        </span>
+
+                        {/* Original Price (Strikethrough) */}
+                        <span className="text-sm text-gray-400 dark:text-gray-500 line-through">
                           {formatPrice(course.price)}
                         </span>
-                        <span className="ml-2 text-primary">
-                          {formatPrice(course.salePrice)}
-                        </span>
-                      </>
-                    ) : (
-                      formatPrice(course.price)
-                    )}
-                  </div>
+                      </div>
+
+                      {/* Discount Badges */}
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        {/* 15% Discount Badge */}
+                        <Badge className="bg-gradient-discount-v2 text-white text-xs font-bold px-2 py-0.5 shadow-md">
+                          15% 할인
+                        </Badge>
+
+                        {/* Savings Badge */}
+                        <Badge className="bg-savings-badge text-white text-xs font-bold px-2 py-0.5 shadow-md">
+                          <span className="text-gradient-savings">
+                            🎁 {formatSavings(calculateSavingsAmount(course.price))}
+                          </span>
+                        </Badge>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

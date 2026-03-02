@@ -45,7 +45,14 @@ export interface Course {
   level: CourseLevel;
   duration: string;
   price: number;
+
+  /**
+   * @deprecated Use calculateDiscountPrice(price) from @/lib/utils instead
+   * This field is kept for backward compatibility only
+   * All components should use the 15% automatic discount calculation
+   */
   salePrice?: number;
+
   isFree: boolean;
   status: CourseStatus;
   inflearnUrl: string;
@@ -54,6 +61,9 @@ export interface Course {
   expectedRelease?: string;
   sortOrder: number;
   reviews?: CourseReview[];  // NEW: Best reviews (2-3)
+  technologies?: string[];    // Tech stack tags (4-6 items)
+  updatedAt?: string;         // Update date ('2025년 2월' format)
+  totalReviewCount?: number;  // Total Inflearn review count (actual number)
 }
 
 // Trust & Conversion Optimization Types

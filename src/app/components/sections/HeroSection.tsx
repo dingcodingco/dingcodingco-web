@@ -11,10 +11,10 @@ interface HeroSectionProps {
 }
 
 const HEADLINES = [
+  { line1: "14,556명이 선택한", line2: "AI 코딩 교육 🚀" },
   { line1: "코딩 몰라도", line2: "4주 만에 수익화 💰" },
   { line1: "38개 기업 합격한", line2: "검증된 커리큘럼 🎓" },
   { line1: "AI로 개발 속도", line2: "10배 향상 ⚡" },
-  { line1: "14,556명이 선택한", line2: "AI 코딩 교육 🚀" },
 ]
 
 export default function HeroSection({ onQuizStart }: HeroSectionProps) {
